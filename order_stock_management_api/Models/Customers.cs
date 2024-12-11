@@ -7,6 +7,7 @@ namespace order_stock_management_api.Models
         [Key]
         public int customerId { get; set; }
         public string customerName { get; set; }
+        public string password { get; set; }
         public int budget { get; set; }
         public string customerType { get; set; }
         public int totalSpend { get; set; }
