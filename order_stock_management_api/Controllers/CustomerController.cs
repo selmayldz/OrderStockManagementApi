@@ -61,7 +61,7 @@ namespace order_stock_management_api.Controllers
             var customer = await _service.LoginAsync(loginDto.customerName, loginDto.password);
             if (customer == null) return Unauthorized("Invalid credentials.");
 
-            var token = JwtHelper.GenerateJwtToken(customer.customerName, _configuration);
+            var token = JwtHelper.GenerateJwtToken(customer.customerName, customer.customerType, _configuration);
 
             return Ok(new { Token = token });
         }
@@ -110,6 +110,7 @@ namespace order_stock_management_api.Controllers
                 return NotFound("Customer not found.");
             }
 
+            existingCustomer.customerName = updateDto.customerName ?? existingCustomer.customerName;
             existingCustomer.password = updateDto.password ?? existingCustomer.password;
             existingCustomer.customerPhoto = updateDto.customerPhoto ?? existingCustomer.customerPhoto;
 

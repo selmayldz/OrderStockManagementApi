@@ -8,14 +8,15 @@ namespace order_stock_management_api.Helpers
     public static class JwtHelper
     {
 
-        public static string GenerateJwtToken(string customerName, IConfiguration configuration)
+        public static string GenerateJwtToken(string customerName, string customerType, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("Jwt");
 
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, customerName),  
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("customerType", customerType)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
