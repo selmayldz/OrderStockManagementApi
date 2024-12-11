@@ -70,7 +70,7 @@ namespace order_stock_management_api.Controllers
         public async Task<IActionResult> GetProfile()
         {
             var customerNameFromToken = HttpContext.User.Claims
-                .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+                .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
             if (string.IsNullOrEmpty(customerNameFromToken))
             {
@@ -96,7 +96,7 @@ namespace order_stock_management_api.Controllers
         public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto updateDto)
         {
             var customerNameFromToken = HttpContext.User.Claims
-                .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+                .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
             if (string.IsNullOrEmpty(customerNameFromToken))
             {

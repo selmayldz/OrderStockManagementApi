@@ -14,7 +14,7 @@ namespace order_stock_management_api.Helpers
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, customerName),
+                new Claim(JwtRegisteredClaimNames.Sub, customerName),  
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -31,5 +31,6 @@ namespace order_stock_management_api.Helpers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
     }
 }
