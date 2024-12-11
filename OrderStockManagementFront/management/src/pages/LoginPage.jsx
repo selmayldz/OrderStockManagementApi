@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/LoginPage.css';
+import '../styles/Login.css';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,10 +17,11 @@ const LoginPage = () => {
     });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('/api/Customers/login', {
+    fetch('http://localhost:5048/api/Customers/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,8 +36,9 @@ const LoginPage = () => {
         }
       })
       .then((data) => {
+        localStorage.setItem('authToken', data.token);
         console.log('Login successful:', data);
-        navigate('/dashboard'); //homepage??
+        navigate('/home');
       })
       .catch((error) => {
         console.error('Login failed:', error);
@@ -44,10 +46,15 @@ const LoginPage = () => {
       });
   };
 
+  const handleRegister = (e) => {
+    e.preventDefault(); 
+    navigate('/register');
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
-        <h2 className="login-title">Login</h2>
+        <h2 className="login-title">Welcome!</h2>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="customerName">Name</label>
@@ -76,6 +83,11 @@ const LoginPage = () => {
           </div>
 
           <button type="submit" className="btn-submit">Login</button>
+
+          <button onClick={handleRegister} className="btn-register">
+            Don't have an account? Register
+          </button>
+
         </form>
       </div>
     </div>
