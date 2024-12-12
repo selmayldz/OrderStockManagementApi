@@ -8,6 +8,10 @@ import LogPage from './pages/LogPage';
 import PriorityPage from './pages/PriorityPage';
 import OrderPage from './pages/OrderPage';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
+import ProfileUpdatePage from './pages/ProfileUpdatePage';
+import AdminPage from './pages/AdminPage';
+import ProductDetail from './pages/ProductDetail';
 
 import './App.css'
 
@@ -17,12 +21,16 @@ const App = () => {
           <Routes>
               <Route path="/" element={<LoginPage />} />
               <Route path="/home" element={<HomePage />} />
+              <Route path="/admin" element={<AdminPage />} />
               <Route path="/customers" element={<CustomerPage />} />
               <Route path="/products" element={<ProductPage />} />
               <Route path="/logs" element={<LogPage />} />
               <Route path="/priority" element={<PriorityPage />} />
               <Route path="/orders" element={<OrderPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/profile/update" element={<ProfileUpdatePage />} />
+              <Route path="/product-detail/:productId" element={<ProductDetail />} />
           </Routes>
       </Router>
   );

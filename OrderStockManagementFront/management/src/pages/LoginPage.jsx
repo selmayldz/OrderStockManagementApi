@@ -39,6 +39,12 @@ const LoginPage = () => {
         localStorage.setItem('authToken', data.token);
         console.log('Login successful:', data);
         navigate('/home');
+
+        if (formData.customerName === 'admin' && formData.password === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/home');
+        }
       })
       .catch((error) => {
         console.error('Login failed:', error);

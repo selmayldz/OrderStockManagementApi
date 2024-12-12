@@ -1,109 +1,112 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f6f9;
-    margin: 0;
-    padding: 0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c, #ffc07f);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+  color: #333;
+}
+
+@keyframes gradientShift {
+  0% {
+      background-position: 0% 50%;
   }
-  
-  .profile-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #e8edf3;
+  50% {
+      background-position: 100% 50%;
   }
-  
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    animation: slideIn 0.8s ease-out;
+  100% {
+      background-position: 0% 50%;
   }
-  
-  .profile-photo {
-    margin-bottom: 20px;
-    animation: bounce 2s infinite; 
-  }
-  
-  .profile-photo img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #007BFF;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .profile-photo img:hover {
-    transform: scale(1.1);
-  }
-  
-  .profile-name {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-    animation: fadeIn 1s ease-out; 
-  }
-  
-  .profile-info {
-    font-size: 16px;
-    color: #555;
-    margin: 5px 0;
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out forwards; 
-    animation-delay: 0.5s;
-  }
-  
-  .profile-info:nth-child(2) {
-    animation-delay: 1s;
-  }
-  
-  .profile-info:nth-child(3) {
-    animation-delay: 1.5s;
-  }
-  
-  .profile-info strong {
-    color: #000;
-  }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateY(-30px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes bounce {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background-color: #ffffff;
+  border: 2px solid #ff758c;
+  color: #ff758c;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+}
+
+.back-button:hover {
+  background-color: #ff758c;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 5px solid #ff758c;
+  box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.profile-details p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+}
+
+.profile-details p strong {
+  color: #ff758c;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #ff758c;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 117, 140, 0.4);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff7eb3;
+  box-shadow: 0 6px 12px rgba(255, 117, 140, 0.6);
+  transform: translateY(-2px);
+}
