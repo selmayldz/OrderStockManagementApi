@@ -8,7 +8,7 @@ body {
   align-items: center;
   overflow: hidden;
   color: #000000;
-  background: linear-gradient(135deg, #d5015a, #b45867, #faab00);
+  background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
   background-size: 300% 300%;
   animation: gradientShift 10s ease infinite;
 }
@@ -37,7 +37,7 @@ body {
   background-color: #ffffffac;
   padding: 50px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.271);
   width: 500px;
   text-align: center;
   animation: slideIn 1.5s ease-out, popIn 2s ease-out 1;
@@ -86,6 +86,7 @@ body {
 .form-group {
   margin-bottom: 25px;
   text-align: center;
+  color: #000000;
   animation: formFadeIn 1.5s ease-out forwards;
 }
 
@@ -104,11 +105,11 @@ body {
   width: 80%; 
   max-width: 350px;
   padding: 12px;
-  border: 2px solid #f49dc0;
+  border: 2px solid #fefefe59;
   border-radius: 8px;
   font-size: 14px;
   color: #000000;
-  background-color: #f49dc0;
+  background-color: #fefefe59;
   transition: border-color 0.3s, box-shadow 0.3s;
   animation: bounceIn 1s ease-in-out;
   margin: 0 auto; 
@@ -128,9 +129,9 @@ body {
 }
 
 .form-group input:focus {
-  border-color: #ff758c;
+  border-color: #fefefe59;
   outline: none;
-  box-shadow: 0 0 8px rgba(255, 117, 140, 0.5);
+  box-shadow: 0 0 8px rgba(215, 152, 247, 0.5);
 }
 
 .btn-submit {
@@ -140,7 +141,7 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: #000000;
-  background-color: #faab00 !important;
+  background-color: #8f00fc84 !important;;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -162,13 +163,11 @@ body {
 }
 
 .btn-submit:hover {
-  background-color: #faab00 !important;
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 228, 90, 0.7);
+  background-color: #8f00fc84;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(215, 152, 247, 0.5);
 }
-.btn-submit:focus {
-  background-color: #faab00 !important;
-}
+
 .btn-submit:active {
   transform: scale(0.95);
 }
@@ -179,8 +178,8 @@ body {
   padding: 12px;
   font-size: 16px;
   font-weight: bold;
-  color: #000000 !important;
-  background-color: #d30461;
+  color: #000000 ;
+  background-color: #fefefe59;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -189,9 +188,9 @@ body {
 }
 
 .btn-register:hover {
-  background-color: #d30461;
+  background-color: #8f00fc84;
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(211, 3, 197, 0.7);
+  box-shadow: 0 0 15px rgba(215, 152, 247, 0.5);
 }
 
 .btn-register:active {

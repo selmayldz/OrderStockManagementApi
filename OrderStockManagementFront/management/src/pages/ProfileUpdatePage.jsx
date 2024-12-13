@@ -6,8 +6,7 @@ const ProfileUpdatePage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     customerName: '',
-    budget: 0,
-    customerType: '',
+    password: '',
     customerPhoto: '',
   });
 
@@ -34,8 +33,7 @@ const ProfileUpdatePage = () => {
       .then((data) => {
         setFormData({
           customerName: data.customerName,
-          budget: data.budget,
-          customerType: data.customerType,
+          password: '',
           customerPhoto: data.customerPhoto,
         });
       })
@@ -84,10 +82,10 @@ const ProfileUpdatePage = () => {
 
   return (
     <div className="profile-update-page">
-      <a href="#" class="back-button" onClick={handleBack}>← Back</a>
+      <a href="#" className="back-button" onClick={handleBack}>← Back</a>
       <h2>Update Profile</h2>
       <div className="form-group">
-          <img src={formData.customerPhoto} alt="Preview" className="photo-preview" />
+        <img src={formData.customerPhoto} alt="Preview" className="photo-preview" />
       </div>
       <form onSubmit={handleSubmit} className="profile-update-form">
         <div className="form-group">
@@ -102,34 +100,23 @@ const ProfileUpdatePage = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="customerPhoto">Photo URL</label>
           <input
             type="url"
             id="customerPhoto"
             name="customerPhoto"
             value={formData.customerPhoto}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="budget">Budget</label>
-          <input
-            type="number"
-            id="budget"
-            name="budget"
-            value={formData.budget}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="customerType">Type</label>
-          <input
-            type="text"
-            id="customerType"
-            name="customerType"
-            value={formData.customerType}
             onChange={handleChange}
             required
           />

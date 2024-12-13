@@ -37,10 +37,10 @@ const LoginPage = () => {
       })
       .then((data) => {
         localStorage.setItem('authToken', data.token);
+        localStorage.setItem('customerType', data.customerType);
         console.log('Login successful:', data);
-        navigate('/home');
 
-        if (formData.customerName === 'admin' && formData.password === 'admin') {
+        if (data.customerType === 'admin') {
           navigate('/admin');
         } else {
           navigate('/home');

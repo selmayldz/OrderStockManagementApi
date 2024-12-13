@@ -4,36 +4,40 @@ import ProductTable from '../components/ProductStockPanel/ProductTable.jsx';
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
-  const token = localStorage.getItem('accessToken'); 
-  console.log("Token:", token); 
-  
+  const token = localStorage.getItem('accessToken');
+  console.log('Token:', token);
+
   const fetchProducts = async () => {
     try {
+      console.log('Fetching products with token:', token); // Token'ı kontrol edin
       const response = await fetch('http://localhost:5048/api/Products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` 
-        }
+          'Authorization': `Bearer ${token}`,
+        },
       });
-
+  
       if (!response.ok) {
-        throw new Error(`Error fetching products: ${response.statusText}`);
+        throw new Error(`Error fetching products: ${response.status} - ${response.statusText}`);
       }
-      console.log("Token:", token);
-
-      const data = await response.json(); 
-      setProducts(data); 
+  
+      const data = await response.json();
+      console.log('Products fetched:', data); // Verileri kontrol edin
+      setProducts(data);
     } catch (error) {
-      console.error('Error fetching products:', error); 
+      console.error('Error fetching products:', error.message);
     }
   };
-
+  
   useEffect(() => {
-    if (token) {
-      fetchProducts(); 
+    if (!token) {
+      console.error('Token bulunamadı.');
+      return;
     }
+    fetchProducts();
   }, [token]);
+  
 
   return (
     <div>

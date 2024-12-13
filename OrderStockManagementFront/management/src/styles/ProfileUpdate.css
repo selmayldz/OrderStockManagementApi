@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #ff7eb3, #ff758c, #ffc07f);
+    background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
     background-size: 300% 300%;
     animation: gradientShift 8s ease infinite;
     color: #333;
@@ -30,19 +30,19 @@ body {
     left: 20px;
     padding: 10px 15px;
     background-color: #ffffff;
-    border: 2px solid #ff758c;
-    color: #ff758c;
+    border: 2px solid #b282d6;
+    color: #b282d6;
     font-size: 1rem;
     border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+    box-shadow: 0 4px 10px rgba(176, 126, 188, 0.4);
 }
 
 .back-button:hover {
-    background-color: #ff758c;
+    background-color: #b282d6;
     color: #fff;
     transform: translateY(-2px);
 }
@@ -52,11 +52,11 @@ body {
     justify-content: center;
     align-items: stretch;
     padding: 40px;
-    background-color: #ffffff;
+    background-color: #ffffffcf;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
-    min-height: 70vh;
+    box-shadow: 0 10px 30px rgba(168, 123, 183, 0.1);
+    margin-top: 10px;
+    min-height: 75vh;
     min-width: 40vw; 
     text-align: center;
     animation: fadeIn 1.5s ease-out;
@@ -95,7 +95,7 @@ input {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #007bff;
+    border: 3px solid #b282d6;
     animation: pulse 1.5s infinite;
 }
 
@@ -104,7 +104,7 @@ input {
     padding: 12px;
     font-size: 1.1rem;
     color: #fff;
-    background-color: #007bff;
+    background-color: #b282d6;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -113,7 +113,7 @@ input {
 }
 
 .update-button:hover {
-    background-color: #0056b3;
+    background-color: #b282d6;
     transform: scale(1.05);
 }
 

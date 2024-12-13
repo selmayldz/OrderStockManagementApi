@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom';
 import '../styles/ProductDetail.css';
 
 const ProductDetail = () => {
-  const { productId } = useParams(); 
+  const { productId } = useParams(); // productId parametresini alıyoruz
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
-      const token = localStorage.getItem('authToken'); 
+      const token = localStorage.getItem('authToken');
 
       if (!token) {
         console.error('No authentication token found');
@@ -16,13 +16,16 @@ const ProductDetail = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:5048/api/Products/${productId}`, {
-          method: 'GET',
-          headers: {
-            accept: '*/*',
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `http://localhost:5048/api/Products/${productId}`, // ID'ye göre API çağrısı
+          {
+            method: 'GET',
+            headers: {
+              accept: '*/*',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error('Failed to fetch product details');
@@ -36,7 +39,9 @@ const ProductDetail = () => {
     };
 
     fetchProductDetails();
-  }, [productId]); 
+  }, [productId]); // productId'ye bağımlı
+
+
 
   if (!product) {
     return <div>Loading...</div>;
@@ -53,13 +58,20 @@ const ProductDetail = () => {
 
       <div className="product-detail">
         <div className="product-detail-image">
-          <img src={product.productPhoto} alt={product.productName} />
+          <img
+            src={product.productPhoto} // Gelen verideki productPhoto
+            alt={product.productName} // Gelen verideki productName
+          />
         </div>
         <div className="product-detail-info">
           <h2>{product.productName}</h2>
           <p>{product.description}</p>
-          <p><strong>Price:</strong> ${product.price}</p>
-          <p><strong>Stock:</strong> {product.stock}</p>
+          <p>
+            <strong>Price:</strong> ${product.price}
+          </p>
+          <p>
+            <strong>Stock:</strong> {product.stock}
+          </p>
           <button className="buy-button">Add to Cart</button>
         </div>
       </div>

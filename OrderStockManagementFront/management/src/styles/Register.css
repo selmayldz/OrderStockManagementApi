@@ -8,7 +8,7 @@ body {
   align-items: center;
   overflow: hidden;
   color: #000000;
-  background: linear-gradient(135deg, #d5015a, #b45867, #faab00);
+  background: linear-gradient(135deg, #8f00fc, #8f00fc84, #fefefe59);
   background-size: 300% 300%;
   animation: gradientShift 10s ease infinite;
 }
@@ -58,7 +58,7 @@ body {
 }
 
 .back-submit:hover {
-  background-color: #faab00;
+  background-color: #da92ec;
   transform: scale(1.05);
 }
 

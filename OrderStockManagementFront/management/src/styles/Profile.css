@@ -6,7 +6,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ff7eb3, #ff758c, #ffc07f);
+  background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
   background-size: 300% 300%;
   animation: gradientShift 8s ease infinite;
   color: #333;
@@ -30,19 +30,19 @@ body {
   left: 20px;
   padding: 10px 15px;
   background-color: #ffffff;
-  border: 2px solid #ff758c;
-  color: #ff758c;
+  border: 2px solid #b282d6 !important;
+  color: #b282d6 !important;
   font-size: 1rem;
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+  box-shadow: 0 4px 10px rgba(193, 141, 235, 0.4);
 }
 
 .back-button:hover {
-  background-color: #ff758c;
+  background-color: #6200ad84 !important;
   color: #fff;
   transform: translateY(-2px);
 }
@@ -68,8 +68,8 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 5px solid #ff758c;
-  box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+  border: 5px solid #b282d6;
+  box-shadow: 0 4px 10px rgba(200, 139, 236, 0.4);
   animation: pulse 2s infinite ease-in-out;
 }
 
@@ -88,25 +88,25 @@ body {
 }
 
 .profile-details p strong {
-  color: #ff758c;
+  color: #b282d6;
   font-weight: bold;
 }
 
 button {
   margin-top: 20px;
   padding: 12px 24px;
-  background-color: #ff758c;
+  background-color: #b282d6 !important;
   color: white;
   font-size: 1.1rem;
   border: none;
   border-radius: 24px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(255, 117, 140, 0.4);
+  box-shadow: 0 4px 8px rgba(200, 139, 236, 0.4);
   transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #ff7eb3;
-  box-shadow: 0 6px 12px rgba(255, 117, 140, 0.6);
+  background-color: #b282d6;
+  box-shadow: 0 6px 12px rgba(200, 139, 236, 0.4);
   transform: translateY(-2px);
 }

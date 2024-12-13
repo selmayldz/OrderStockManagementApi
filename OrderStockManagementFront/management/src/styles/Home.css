@@ -9,7 +9,7 @@ body {
     align-items: stretch;
     overflow: hidden;
     color: #000000;
-    background: linear-gradient(135deg, #d5015a, #b45867, #faab00);
+    background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
     background-size: 300% 300%;
     animation: gradientShift 10s ease infinite;
 }
@@ -30,11 +30,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #ff758c, #ff9e57);
+    padding: 10px 30px;
+    background: linear-gradient(135deg, #6200ad84, #ffffffbf);
     color: white;
     width: 100%;
-    height: 100px;
+    height: 150px;
     position: absolute;
     top: 0;
     left: 0;
@@ -61,21 +61,21 @@ body {
 }
 
 .logo {
-    width: 60px;
-    height: 30px;
+    width: 90px;
+    height: 10px;
     margin-right: 20px;
-    background: linear-gradient(90deg, #faab00, #ff758c);
+    background: linear-gradient(90deg, #bd79eb, #a89d9f);
     border-radius: 50%;
-    border-bottom: 50%;
+    clip-path: circle(100%);
     display: flex;
     justify-content: center; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: width 0.1s ease, height 0.1s ease, font-size 0.1s ease; 
+    transition: width 0.01s ease, height 0.01s ease, font-size 0.1s ease; 
 }
 
 .logo:hover {
-    width: 30px; 
-    height: 30px;  
+    width: 80px; 
+    height: 80px;  
     animation: logoRotate 1.5s linear infinite;
 }
 
@@ -97,7 +97,7 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    background-color: #faab00;
+    background-color: #6200ad84 !important;
     color: white;
     border: none;
     border-radius: 8px;
@@ -107,7 +107,7 @@ body {
 }
 
 .header-button:hover {
-    background-color: #ff758c;
+    background-color: #b282d6 !important;
     transform: scale(1.05);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
@@ -134,7 +134,7 @@ body {
   }
   
   .product-card {
-    background: #ffae00da;
+    background: #ffffffbf;
     border-radius: 10px; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
     width: 300px;
@@ -159,21 +159,21 @@ body {
     object-fit: cover; 
     border-radius: 5px;
     margin-bottom: 15px;
-    border: 5px solid #ff758c;
-    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+    border: 5px solid #b282d6;
+    box-shadow: 0 4px 10px rgba(228, 121, 238, 0.4);
     animation: pulse 2s infinite ease-in-out;
 }
 
 .product-card h3 {
     font-size: 18px;
-    color: #333;
+    color: #000000;
     margin: 10px 0;
     text-align: center; 
 }
 
 .product-card p {
     font-size: 14px;
-    color: #555;
+    color: #000000;
     margin: 5px 0;
     text-align: center; 
 }
