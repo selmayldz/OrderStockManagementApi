@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
+import { parseJwt } from '../utils/authHelper';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -37,13 +38,19 @@ const LoginPage = () => {
       })
       .then((data) => {
         localStorage.setItem('authToken', data.token);
-        localStorage.setItem('customerType', data.customerType);
         console.log('Login successful:', data);
 
-        if (data.customerType === 'admin') {
-          navigate('/admin');
+        const tokenPayload = parseJwt(data.token);
+
+        if (tokenPayload && tokenPayload.customerType) {
+          if (tokenPayload.customerType === 'admin') {
+            navigate('/admin');
+          } else {
+            navigate('/home');
+          }
         } else {
-          navigate('/home');
+          console.error('Invalid token or customerType not found.');
+          navigate('/login'); // Geçersiz token için login sayfasına yönlendir
         }
       })
       .catch((error) => {

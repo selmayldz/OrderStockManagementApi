@@ -16,6 +16,7 @@ const ProductDetail = () => {
       }
 
       try {
+        console.log(productId)
         const response = await fetch(
           `http://localhost:5048/api/Products/${productId}`, // ID'ye göre API çağrısı
           {

@@ -4,7 +4,7 @@ import ProductTable from '../components/ProductStockPanel/ProductTable.jsx';
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem('authToken');
   console.log('Token:', token);
 
   const fetchProducts = async () => {

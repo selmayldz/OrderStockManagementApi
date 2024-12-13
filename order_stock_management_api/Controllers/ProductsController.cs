@@ -53,6 +53,7 @@ namespace order_stock_management_api.Controllers
 
                 var productDtos = products.Select(product => new ProductDto
                 {
+                    productId = product.productId,
                     productName = product.productName,
                     stock = product.stock,
                     price = product.price,
@@ -127,6 +128,7 @@ namespace order_stock_management_api.Controllers
 
             var productDto = new ProductDto
             {
+                productId = product.productId,
                 productName = product.productName,
                 stock = product.stock,
                 price = product.price,

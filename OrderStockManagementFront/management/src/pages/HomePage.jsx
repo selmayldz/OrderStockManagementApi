@@ -72,7 +72,7 @@ const HomePage = () => {
             <div
               key={product.productName}
               className="product-card"
-              onClick={() => handleProductClick(product.productName)}
+              onClick={() => handleProductClick(product.productId)}
             >
               <img src={product.productPhoto} alt={product.productName} className="product-image" />
               <h3>{product.productName}</h3>
