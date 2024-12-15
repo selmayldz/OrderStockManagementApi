@@ -7,20 +7,16 @@ const ProductTable = ({ products }) => {
       <table>
         <thead>
           <tr>
-            <th>Product Name</th>
-            <th>Stock</th>
-            <th>Price</th>
-            <th>Description</th>
             <th>Image</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product, index) => (
             <tr key={index}>
-              <td>{product.productName}</td>
-              <td>{product.stock}</td>
-              <td>${product.price}</td>
-              <td>{product.description}</td>
               <td>
                 <img
                   src={product.productPhoto}
@@ -28,6 +24,10 @@ const ProductTable = ({ products }) => {
                   style={{ width: '100px', height: 'auto' }}
                 />
               </td>
+              <td>{product.productName}</td>
+              <td>{product.description}</td>
+              <td>${product.price}</td>
+              <td>{product.stock}</td>
             </tr>
           ))}
         </tbody>

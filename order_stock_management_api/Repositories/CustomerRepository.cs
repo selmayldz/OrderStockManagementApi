@@ -47,7 +47,6 @@ namespace order_stock_management_api.Repositories
 
         public Task LogoutAsync()
         {
-            // No specific action required for logout in this implementation.
             return Task.CompletedTask;
         }
     }

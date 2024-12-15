@@ -11,20 +11,22 @@ const AdminPage = () => {
       };
 
     return (
-        <div className="admin-page">
-            <div className="admin-navigation">
-                <button className="nav-button" onClick={() => navigate('/customers')}>
-                    Customer List
-                </button>
-                <button className="nav-button" onClick={() => navigate('/logs')}>
-                    Activity Logs
-                </button>
-                <button className="nav-button" onClick={() => navigate('/products')}>
-                    Product Stock Status
-                </button>
-                <button className="header-button" onClick={handleLogout}>Logout</button>
+        <body>
+            <div className="admin-page">
+                <div className="admin-navigation">
+                    <button className="nav-button" onClick={() => navigate('/customers')}>
+                        Customer List
+                    </button>
+                    <button className="nav-button" onClick={() => navigate('/logs')}>
+                        Activity Logs
+                    </button>
+                    <button className="nav-button" onClick={() => navigate('/products')}>
+                        Product Stock Status
+                    </button>
+                    <button className="header-button" onClick={handleLogout}>Logout</button>
+                </div>
             </div>
-        </div>
+        </body>
     );
 };
 

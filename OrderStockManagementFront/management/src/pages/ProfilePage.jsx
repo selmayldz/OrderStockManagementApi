@@ -45,25 +45,26 @@ const ProfilePage = () => {
   };
 
   return (
-    
-    <div className="profile-page">
-      <a href="#" class="back-button" onClick={handleBack}>← Back</a>
-      <h2>Profile</h2>
-      <div className="profile-details">
-        <img
-          src={profileData.customerPhoto}
-          alt={`${profileData.customerName}'s Avatar`}
-          className="profile-photo"
-        />
-        <p><strong>Name:</strong> {profileData.customerName}</p>
-        <p><strong>Budget:</strong> ${profileData.budget}</p>
-        <p><strong>Type:</strong> {profileData.customerType}</p>
-        <p><strong>Total Spend:</strong> ${profileData.totalSpend}</p>
+    <body>
+      <div className="profile-page">
+        <a href="#" class="back-button" onClick={handleBack}>← Back</a>
+        <h2>Profile</h2>
+        <div className="profile-details">
+          <img
+            src={profileData.customerPhoto}
+            alt={`${profileData.customerName}'s Avatar`}
+            className="profile-photo"
+          />
+          <p><strong>Name:</strong> {profileData.customerName}</p>
+          <p><strong>Budget:</strong> ${profileData.budget}</p>
+          <p><strong>Type:</strong> {profileData.customerType}</p>
+          <p><strong>Total Spend:</strong> ${profileData.totalSpend}</p>
+        </div>
+        <button className="update-button" onClick={handleProfileUpdate}>
+          Update Profile
+        </button>
       </div>
-      <button className="update-button" onClick={handleProfileUpdate}>
-        Update Profile
-      </button>
-    </div>
+    </body>
   );
 };
 

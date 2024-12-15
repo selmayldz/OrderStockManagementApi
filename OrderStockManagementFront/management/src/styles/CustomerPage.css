@@ -1,0 +1,117 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    color: #000000;
+    background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.customer-page {
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    height: auto; 
+    overflow-y: auto; 
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.customer-table th, .customer-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.customer-photo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.details-button {
+    background-color: #b282d6;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.details-button:hover {
+    background-color: #b282d6;
+}
+
+.customer-details {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.customer-photo-large {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .customer-table th, .customer-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .customer-photo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .details-button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .customer-details {
+        padding: 15px;
+    }
+
+    .customer-photo-large {
+        width: 130px;
+        height: 130px;
+    }
+}

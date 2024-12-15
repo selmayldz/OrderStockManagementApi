@@ -81,51 +81,53 @@ const ProfileUpdatePage = () => {
   };
 
   return (
-    <div className="profile-update-page">
-      <a href="#" className="back-button" onClick={handleBack}>← Back</a>
-      <h2>Update Profile</h2>
-      <div className="form-group">
-        <img src={formData.customerPhoto} alt="Preview" className="photo-preview" />
+    <body>
+      <div className="profile-update-page">
+        <a href="#" className="back-button" onClick={handleBack}>← Back</a>
+        <h2>Update Profile</h2>
+        <div className="form-group">
+          <img src={formData.customerPhoto} alt="Preview" className="photo-preview" />
+        </div>
+        <form onSubmit={handleSubmit} className="profile-update-form">
+          <div className="form-group">
+            <label htmlFor="customerName">Name</label>
+            <input
+              type="text"
+              id="customerName"
+              name="customerName"
+              value={formData.customerName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="customerPhoto">Photo URL</label>
+            <input
+              type="url"
+              id="customerPhoto"
+              name="customerPhoto"
+              value={formData.customerPhoto}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="update-button">
+            Update Profile
+          </button>
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="profile-update-form">
-        <div className="form-group">
-          <label htmlFor="customerName">Name</label>
-          <input
-            type="text"
-            id="customerName"
-            name="customerName"
-            value={formData.customerName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="customerPhoto">Photo URL</label>
-          <input
-            type="url"
-            id="customerPhoto"
-            name="customerPhoto"
-            value={formData.customerPhoto}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="update-button">
-          Update Profile
-        </button>
-      </form>
-    </div>
+    </body>
   );
 };
 

@@ -12,8 +12,8 @@ import ProfilePage from './pages/ProfilePage';
 import ProfileUpdatePage from './pages/ProfileUpdatePage';
 import AdminPage from './pages/AdminPage';
 import ProductDetail from './pages/ProductDetail';
+import CustomerDetail from './pages/CustomerDetail';
 
-import './App.css'
 
 const App = () => {
   return (
@@ -31,7 +31,8 @@ const App = () => {
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/profile/update" element={<ProfileUpdatePage />} />
               <Route path="/product-detail/:productId" element={<ProductDetail />} />
-          </Routes>
+              <Route path="/customers-details/:customerName" element={<CustomerDetail />} /> 
+            </Routes>
       </Router>
   );
 };

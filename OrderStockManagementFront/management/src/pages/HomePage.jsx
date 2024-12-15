@@ -54,38 +54,39 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <header className="header">
-        <div className="logo-container">
-          <img src="logo.png" alt="Logo" className="logo" />
-          <h1 className="app-name">Öz Elbistanlılar Trendyol</h1>
+    <body>
+      <div>
+        <header className="header">
+          <div className="logo-container">
+            <img src="logo.png" alt="Logo" className="logo" />
+            <h1 className="app-name">Öz Elbistanlılar Trendyol</h1>
+          </div>
+          <div className="header-buttons">
+            <button className="header-button">My Orders</button>
+            <button className="header-button" onClick={handleProfile}>Profile</button>
+            <button className="header-button" onClick={handleLogout}>Logout</button>
+          </div>
+        </header>
+        <div className="products-container">
+          {products.length > 0 ? (
+            products.map((product) => (
+              <div
+                key={product.productName}
+                className="product-card"
+                onClick={() => handleProductClick(product.productId)}
+              >
+                <img src={product.productPhoto} alt={product.productName} className="product-image" />
+                <h3>{product.productName}</h3>
+                <p>{product.description}</p>
+                <p>Price: ${product.price}</p>
+              </div>
+            ))
+          ) : (
+            <p>Loading products...</p> 
+          )}
         </div>
-        <div className="header-buttons">
-          <button className="header-button">My Orders</button>
-          <button className="header-button" onClick={handleProfile}>Profile</button>
-          <button className="header-button" onClick={handleLogout}>Logout</button>
-        </div>
-      </header>
-      <div className="products-container">
-        {products.length > 0 ? (
-          products.map((product) => (
-            <div
-              key={product.productName}
-              className="product-card"
-              onClick={() => handleProductClick(product.productId)}
-            >
-              <img src={product.productPhoto} alt={product.productName} className="product-image" />
-              <h3>{product.productName}</h3>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
-              <p>Stock: {product.stock}</p>
-            </div>
-          ))
-        ) : (
-          <p>Loading products...</p> 
-        )}
       </div>
-    </div>
+    </body>
   );
 };
 

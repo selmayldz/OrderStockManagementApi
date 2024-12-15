@@ -65,45 +65,47 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <h2 className="login-title">Welcome!</h2>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="customerName">Name</label>
-            <input
-              type="text"
-              id="customerName"
-              name="customerName"
-              value={formData.customerName}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              required
-            />
-          </div>
+    <body>
+      <div className="login-page">
+        <div className="login-container">
+          <h2 className="login-title">Welcome!</h2>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="customerName">Name</label>
+              <input
+                type="text"
+                id="customerName"
+                name="customerName"
+                value={formData.customerName}
+                onChange={handleChange}
+                placeholder="Enter your name"
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+              />
+            </div>
 
-          <button type="submit" className="btn-submit">Login</button>
+            <button type="submit" className="btn-submit">Login</button>
 
-          <button onClick={handleRegister} className="btn-register">
-            Don't have an account? Register
-          </button>
+            <button onClick={handleRegister} className="btn-register">
+              Don't have an account? Register
+            </button>
 
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </body>
   );
 };
 
