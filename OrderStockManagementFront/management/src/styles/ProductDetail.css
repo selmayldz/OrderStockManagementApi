@@ -27,30 +27,21 @@
 }
 .product-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 30px;
-  background: linear-gradient(135deg, #6200ad84, #ffffffbf);
-  color: white;
-  width: 100%;
-  height: 150px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  animation: slideDown 1s ease-out;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-@keyframes slideDown {
-  0% {
-      transform: translateY(-100%);
-  }
-  100% {
-      transform: translateY(0);
-  }
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background: linear-gradient(135deg, #6200ad84, #ffffffbf);
+    color: white;
+    width: 100%;
+    height: 130px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    animation: slideDown 1s ease-out;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .product-logo-container {
@@ -60,16 +51,14 @@
 }
 
 .product-logo {
-  width: 90px;
-  height: 10px;
-  margin-right: 20px;
-  background: linear-gradient(90deg, #bd79eb, #a89d9f);
-  border-radius: 50%;
-  clip-path: circle(100%);
-  display: flex;
-  justify-content: center; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: width 0.01s ease, height 0.01s ease, font-size 0.1s ease; 
+  width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: width 0.01s ease, height 0.01s ease, font-size 0.1s ease; 
 }
 
 .product-logo:hover {
@@ -77,6 +66,7 @@
   height: 80px;  
   animation: logoRotate 1.5s linear infinite;
 }
+
 
 .product-app-name {
   font-size: 24px;
@@ -99,7 +89,7 @@
   align-items: center;
   width: 100%;
   min-height: 50vh;
-  max-width: 1200px;
+  max-width: 900px;
   margin-top: 70px;
   background-color: #ffffff;
   border-radius: 12px;
@@ -197,4 +187,21 @@
 
 .product-buy-button:active, .product-order-button:active {
   transform: scale(0.95);
+}
+
+@keyframes logoRotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+@keyframes slideDown {
+  0% {
+      transform: translateY(-100%);
+  }
+  100% {
+      transform: translateY(0);
+  }
 }

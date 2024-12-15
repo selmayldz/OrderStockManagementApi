@@ -11,7 +11,7 @@ const AdminPage = () => {
       };
 
     return (
-        <body>
+        <div className="admin-body">
             <div className="admin-page">
                 <div className="admin-navigation">
                     <button className="admin-nav-button" onClick={() => navigate('/customers')}>
@@ -26,7 +26,7 @@ const AdminPage = () => {
                     <button className="admin-header-button" onClick={handleLogout}>Logout</button>
                 </div>
             </div>
-        </body>
+        </div>
     );
 };
 

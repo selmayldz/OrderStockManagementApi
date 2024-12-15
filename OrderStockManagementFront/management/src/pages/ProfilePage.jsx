@@ -45,7 +45,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <body>
+    <div className="profile-body">
       <div className="profile-page">
         <a href="#" class="profile-back-button" onClick={handleBack}>← Back</a>
         <h2>Profile</h2>
@@ -64,7 +64,7 @@ const ProfilePage = () => {
           Update Profile
         </button>
       </div>
-    </body>
+    </div>
   );
 };
 

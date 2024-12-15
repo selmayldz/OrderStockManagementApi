@@ -87,7 +87,6 @@ const ProductDetail = () => {
   }
 
   return (
-    <body>
       <div>
         <header className="product-header">
           <div className="product-logo-container">
@@ -95,6 +94,7 @@ const ProductDetail = () => {
             <h1 className="product-app-name">Öz Elbistanlılar Trendyol</h1>
           </div>
         </header>
+
         <div className="product-detail-container">
           <div className="product-detail-card">
             <div className="product-detail">
@@ -113,7 +113,6 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-    </body>
   );  
 };
 

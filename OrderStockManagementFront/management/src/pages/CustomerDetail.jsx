@@ -49,7 +49,7 @@ const CustomerDetail = () => {
   }
 
   return (
-    <body>
+    <div className="customer-body">
         <div className="customer-detail-page">
             <h1>Customer Details</h1>
             <div className="customer-detail">
@@ -64,7 +64,7 @@ const CustomerDetail = () => {
                 </div>
             </div>
         </div>
-    </body>
+    </div>
   );
 };
 

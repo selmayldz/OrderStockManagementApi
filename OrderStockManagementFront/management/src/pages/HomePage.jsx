@@ -66,6 +66,7 @@ const HomePage = () => {
             <button className="home-header-button" onClick={handleLogout}>Logout</button>
           </div>
         </header>
+        
         <div className="home-products-container">
           {products.length > 0 ? (
             products.map((product) => (
