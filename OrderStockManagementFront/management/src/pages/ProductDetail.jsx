@@ -89,10 +89,10 @@ const ProductDetail = () => {
   return (
     <body>
       <div>
-        <header className="header">
-          <div className="logo-container">
-            <img src="/logo.png" alt="Logo" className="logo" />
-            <h1 className="app-name">Öz Elbistanlılar Trendyol</h1>
+        <header className="product-header">
+          <div className="product-logo-container">
+            <img src="/logo.png" alt="Logo" className="product-logo" />
+            <h1 className="product-app-name">Öz Elbistanlılar Trendyol</h1>
           </div>
         </header>
         <div className="product-detail-container">
@@ -105,8 +105,8 @@ const ProductDetail = () => {
                 <h2>{product.productName}</h2>
                 <p>{product.description}</p>
                 <p><strong>Price:</strong> ${product.price}</p>
-                <div className="action-buttons">
-                  <button className="buy-button">Add to Cart</button>
+                <div className="product-action-buttons">
+                  <button className="product-buy-button">Add to Cart</button>
                 </div>
               </div>
             </div>

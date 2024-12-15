@@ -1,4 +1,4 @@
-body {
+.profile-body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
@@ -24,7 +24,7 @@ body {
   }
 }
 
-.back-button {
+.profile-back-button {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -41,7 +41,7 @@ body {
   box-shadow: 0 4px 10px rgba(193, 141, 235, 0.4);
 }
 
-.back-button:hover {
+.profile-back-button:hover {
   background-color: #6200ad84 !important;
   color: #fff;
   transform: translateY(-2px);
@@ -92,7 +92,7 @@ body {
   font-weight: bold;
 }
 
-button {
+.profile-button {
   margin-top: 20px;
   padding: 12px 24px;
   background-color: #b282d6 !important;
@@ -105,7 +105,7 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.profile-button:hover {
   background-color: #b282d6;
   box-shadow: 0 6px 12px rgba(200, 139, 236, 0.4);
   transform: translateY(-2px);

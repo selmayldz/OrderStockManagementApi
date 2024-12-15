@@ -3,7 +3,7 @@ import '../../styles/ProductTable.css';
 
 const ProductTable = ({ products }) => {
   return (
-    <div className="product-table">
+    <div className="products-table">
       <table>
         <thead>
           <tr>

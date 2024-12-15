@@ -1,4 +1,4 @@
-body {
+.product-body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -25,7 +25,7 @@ body {
       background-position: 0% 50%;
   }
 }
-.header {
+.product-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,13 +53,13 @@ body {
   }
 }
 
-.logo-container {
+.product-logo-container {
   display: flex;
   align-items: center;
   flex-grow: 1;
 }
 
-.logo {
+.product-logo {
   width: 90px;
   height: 10px;
   margin-right: 20px;
@@ -72,13 +72,13 @@ body {
   transition: width 0.01s ease, height 0.01s ease, font-size 0.1s ease; 
 }
 
-.logo:hover {
+.product-logo:hover {
   width: 80px; 
   height: 80px;  
   animation: logoRotate 1.5s linear infinite;
 }
 
-.app-name {
+.product-app-name {
   font-size: 24px;
   font-weight: bold;
   color: white;
@@ -150,33 +150,32 @@ body {
   line-height: 1.5;
 }
 
-.quantity-selector {
+.product-quantity-selector {
   margin: 20px 0;
   font-size: 16px;
   display: flex;
   align-items: center;
 }
 
-.quantity-selector label {
+.product-quantity-selector label {
   margin-right: 10px;
   font-weight: bold;
 }
 
-.quantity-selector select {
+.product-quantity-selector select {
   padding: 5px 10px;
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-.action-buttons {
+.product-action-buttons {
   display: flex;
   gap: 20px;
   margin-top: 20px;
 }
 
-.buy-button,
-.order-button {
+.product-buy-button, .product-order-button {
   padding: 12px 25px;
   background-color: #bd79eb;
   color: white;
@@ -191,13 +190,11 @@ body {
   bottom: 20px; 
 }
 
-.buy-button:hover,
-.order-button:hover {
+.product-buy-button:hover, .product-order-button:hover {
   background-color: #bd79eb;
   transform: scale(1.05);
 }
 
-.buy-button:active,
-.order-button:active {
+.product-buy-button:active, .product-order-button:active {
   transform: scale(0.95);
 }

@@ -1,20 +1,20 @@
-.product-table {
+.products-table {
     width: 100%;
     margin-top: 20px;
   }
   
-  .product-table table {
+  .products-table table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .product-table th, .product-table td {
+  .products-table th, .product-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
   
-  .product-table th {
+  .products-table th {
     background-color: #f2f2f2;
   }
   

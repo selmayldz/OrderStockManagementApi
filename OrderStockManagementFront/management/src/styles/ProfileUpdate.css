@@ -1,4 +1,4 @@
-body {
+.profile-update-body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -24,7 +24,7 @@ body {
     }
 }
 
-.back-button {
+.profile-update-back-button {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -41,7 +41,7 @@ body {
     box-shadow: 0 4px 10px rgba(176, 126, 188, 0.4);
 }
 
-.back-button:hover {
+.profile-update-back-button:hover {
     background-color: #b282d6;
     color: #fff;
     transform: translateY(-2px);
@@ -64,13 +64,13 @@ body {
     margin-right: auto; 
 }
 
-h2 {
+.profile-update-h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #333;
 }
 
-label {
+.profile-update-label {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
@@ -78,7 +78,7 @@ label {
     text-align: center;
 }
 
-input {
+.profile-update-input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -88,7 +88,7 @@ input {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.photo-preview {
+.profile-update-photo-preview {
     display: block;
     margin: 20px auto;
     width: 120px;
@@ -99,7 +99,7 @@ input {
     animation: pulse 1.5s infinite;
 }
 
-.update-button {
+.profile-update-button {
     width: 100%;
     padding: 12px;
     font-size: 1.1rem;
@@ -112,7 +112,7 @@ input {
     margin-top: 10px;
 }
 
-.update-button:hover {
+.profile-update--button:hover {
     background-color: #b282d6;
     transform: scale(1.05);
 }

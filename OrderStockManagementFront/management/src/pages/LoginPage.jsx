@@ -50,7 +50,7 @@ const LoginPage = () => {
           }
         } else {
           console.error('Invalid token or customerType not found.');
-          navigate('/login'); // Geçersiz token için login sayfasına yönlendir
+          navigate('/login'); 
         }
       })
       .catch((error) => {
@@ -70,8 +70,8 @@ const LoginPage = () => {
         <div className="login-container">
           <h2 className="login-title">Welcome!</h2>
           <form className="login-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="customerName">Name</label>
+            <div className="login-form-group">
+              <label htmlFor="login-customerName">Name</label>
               <input
                 type="text"
                 id="customerName"
@@ -83,8 +83,8 @@ const LoginPage = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
+            <div className="login-form-group">
+              <label htmlFor="login-password">Password</label>
               <input
                 type="password"
                 id="password"
@@ -96,9 +96,9 @@ const LoginPage = () => {
               />
             </div>
 
-            <button type="submit" className="btn-submit">Login</button>
+            <button type="submit" className="login-btn-submit">Login</button>
 
-            <button onClick={handleRegister} className="btn-register">
+            <button onClick={handleRegister} className="login-btn-register">
               Don't have an account? Register
             </button>
 

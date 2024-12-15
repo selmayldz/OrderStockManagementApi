@@ -83,13 +83,13 @@ const ProfileUpdatePage = () => {
   return (
     <body>
       <div className="profile-update-page">
-        <a href="#" className="back-button" onClick={handleBack}>← Back</a>
+        <a href="#" className="profile-update-back-button" onClick={handleBack}>← Back</a>
         <h2>Update Profile</h2>
-        <div className="form-group">
-          <img src={formData.customerPhoto} alt="Preview" className="photo-preview" />
+        <div className="profile-update-form-group">
+          <img src={formData.customerPhoto} alt="Preview" className="profile-update-photo-preview" />
         </div>
         <form onSubmit={handleSubmit} className="profile-update-form">
-          <div className="form-group">
+          <div className="profile-update-form-group">
             <label htmlFor="customerName">Name</label>
             <input
               type="text"
@@ -100,7 +100,7 @@ const ProfileUpdatePage = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="profile-update-form-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -111,7 +111,7 @@ const ProfileUpdatePage = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="profile-update-form-group">
             <label htmlFor="customerPhoto">Photo URL</label>
             <input
               type="url"
@@ -122,7 +122,7 @@ const ProfileUpdatePage = () => {
               required
             />
           </div>
-          <button type="submit" className="update-button">
+          <button type="submit" className="profile-update-button">
             Update Profile
           </button>
         </form>

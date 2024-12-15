@@ -1,4 +1,4 @@
-body {
+.login-body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -84,7 +84,7 @@ body {
   }
 }
 
-.form-group {
+.login-form-group {
   margin-bottom: 25px;
   text-align: center;
   color: #000000;
@@ -102,7 +102,7 @@ body {
   }
 }
 
-.form-group input {
+.login-form-group input {
   width: 80%; 
   max-width: 350px;
   padding: 12px;
@@ -129,13 +129,13 @@ body {
   }
 }
 
-.form-group input:focus {
+.login-form-group input:focus {
   border-color: #fefefe59;
   outline: none;
   box-shadow: 0 0 8px rgba(215, 152, 247, 0.5);
 }
 
-.btn-submit {
+.login-btn-submit {
   width: 100%; 
   max-width: 400px;
   padding: 12px;
@@ -163,17 +163,17 @@ body {
   }
 }
 
-.btn-submit:hover {
+.login-btn-submit:hover {
   background-color: #8f00fc84;
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(215, 152, 247, 0.5);
 }
 
-.btn-submit:active {
+.login-btn-submit:active {
   transform: scale(0.95);
 }
 
-.btn-register {
+.login-btn-register {
   width: 100%;
   max-width: 400px;
   padding: 12px;
@@ -188,12 +188,12 @@ body {
   transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
-.btn-register:hover {
+.login-btn-register:hover {
   background-color: #8f00fc84;
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(215, 152, 247, 0.5);
 }
 
-.btn-register:active {
+.login-btn-register:active {
   transform: scale(0.95);
 }

@@ -54,9 +54,9 @@ const CustomerPage = () => {
 
   return (
     <body>
-      <div className="customer-page">
+      <div className="customers-page">
         <h1>Customer List</h1>
-        <table className="customer-table">
+        <table className="customers-table">
           <thead>
             <tr>
               <th>Photo</th>
@@ -71,7 +71,7 @@ const CustomerPage = () => {
             {customers.map((customer, index) => (
               <tr key={index}>
                 <td>
-                  <img src={customer.customerPhoto} alt={customer.customerName} className="customer-photo" />
+                  <img src={customer.customerPhoto} alt={customer.customerName} className="customers-photo" />
                 </td>
                 <td>{customer.customerName}</td>
                 <td>{customer.customerType}</td>
@@ -79,7 +79,7 @@ const CustomerPage = () => {
                 <td>${customer.totalSpend}</td>
                 <td>
                   <button 
-                    className="details-button" 
+                    className="customers-details-button" 
                     onClick={() => handleDetailsClick(customer)}
                   >
                     View Details

@@ -47,9 +47,9 @@ const ProfilePage = () => {
   return (
     <body>
       <div className="profile-page">
-        <a href="#" class="back-button" onClick={handleBack}>← Back</a>
+        <a href="#" class="profile-back-button" onClick={handleBack}>← Back</a>
         <h2>Profile</h2>
-        <div className="profile-details">
+        <div className="profile-profile-details">
           <img
             src={profileData.customerPhoto}
             alt={`${profileData.customerName}'s Avatar`}
@@ -60,7 +60,7 @@ const ProfilePage = () => {
           <p><strong>Type:</strong> {profileData.customerType}</p>
           <p><strong>Total Spend:</strong> ${profileData.totalSpend}</p>
         </div>
-        <button className="update-button" onClick={handleProfileUpdate}>
+        <button className="profile-update-button" onClick={handleProfileUpdate}>
           Update Profile
         </button>
       </div>

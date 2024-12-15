@@ -58,13 +58,13 @@ const RegisterPage = () => {
   return (
     <body>
       <div className="register-page">
-        <button className="back-submit" onClick={handleBack}>
+        <button className="register-back-submit" onClick={handleBack}>
           &larr; Back
         </button>
         <div className="register-container">
           <h2 className="register-title">Create Your Account</h2>
           <form className="register-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="register-form-group">
               <label htmlFor="customerName">Name</label>
               <input
                 type="text"
@@ -77,7 +77,7 @@ const RegisterPage = () => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="register-form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -90,7 +90,7 @@ const RegisterPage = () => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="register-form-group">
               <label htmlFor="customerPhoto">Profile Photo URL</label>
               <input
                 type="text"
@@ -103,7 +103,7 @@ const RegisterPage = () => {
               />
             </div>
 
-            <button type="submit" className="btn-submit">Create Account</button>
+            <button type="submit" className="register-btn-submit">Create Account</button>
           </form>
         </div>
       </div>

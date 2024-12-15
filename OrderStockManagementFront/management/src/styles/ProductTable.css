@@ -1,19 +1,19 @@
-.product-table {
+.products-table {
     margin-top: 20px;
   }
   
-  .product-table table {
+  .products-table table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .product-table th, .product-table td {
+  .products-table th, .product-table td {
     padding: 12px;
     text-align: left;
     border: 1px solid #ef0000;
   }
   
-  .product-table img {
+  .products-table img {
     width: 100px;
     height: auto;
   }

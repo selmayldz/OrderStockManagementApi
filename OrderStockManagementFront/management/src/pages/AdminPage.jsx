@@ -14,16 +14,16 @@ const AdminPage = () => {
         <body>
             <div className="admin-page">
                 <div className="admin-navigation">
-                    <button className="nav-button" onClick={() => navigate('/customers')}>
+                    <button className="admin-nav-button" onClick={() => navigate('/customers')}>
                         Customer List
                     </button>
-                    <button className="nav-button" onClick={() => navigate('/logs')}>
+                    <button className="admin-nav-button" onClick={() => navigate('/logs')}>
                         Activity Logs
                     </button>
-                    <button className="nav-button" onClick={() => navigate('/products')}>
+                    <button className="admin-nav-button" onClick={() => navigate('/products')}>
                         Product Stock Status
                     </button>
-                    <button className="header-button" onClick={handleLogout}>Logout</button>
+                    <button className="admin-header-button" onClick={handleLogout}>Logout</button>
                 </div>
             </div>
         </body>

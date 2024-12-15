@@ -54,28 +54,27 @@ const HomePage = () => {
   }, []);
 
   return (
-    <body>
       <div>
-        <header className="header">
-          <div className="logo-container">
-            <img src="logo.png" alt="Logo" className="logo" />
-            <h1 className="app-name">Öz Elbistanlılar Trendyol</h1>
+        <header className="home-header">
+          <div className="home-logo-container">
+            <img src="logo.png" alt="Logo" className="home-logo" />
+            <h1 className="home-app-name">Öz Elbistanlılar Trendyol</h1>
           </div>
-          <div className="header-buttons">
-            <button className="header-button">My Orders</button>
-            <button className="header-button" onClick={handleProfile}>Profile</button>
-            <button className="header-button" onClick={handleLogout}>Logout</button>
+          <div className="home-header-buttons">
+            <button className="home-header-button">My Orders</button>
+            <button className="home-header-button" onClick={handleProfile}>Profile</button>
+            <button className="home-header-button" onClick={handleLogout}>Logout</button>
           </div>
         </header>
-        <div className="products-container">
+        <div className="home-products-container">
           {products.length > 0 ? (
             products.map((product) => (
               <div
                 key={product.productName}
-                className="product-card"
+                className="home-product-card"
                 onClick={() => handleProductClick(product.productId)}
               >
-                <img src={product.productPhoto} alt={product.productName} className="product-image" />
+                <img src={product.productPhoto} alt={product.productName} className="home-product-image" />
                 <h3>{product.productName}</h3>
                 <p>{product.description}</p>
                 <p>Price: ${product.price}</p>
@@ -86,7 +85,6 @@ const HomePage = () => {
           )}
         </div>
       </div>
-    </body>
   );
 };
 
