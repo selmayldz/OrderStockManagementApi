@@ -26,13 +26,11 @@
     }
 }
 
-.customers--page {
+.customers-page {
     font-family: 'Roboto', sans-serif;
     padding: 20px;
     max-width: 1200px;
-    margin: 20px auto;
-    height: auto; 
-    overflow-y: auto; 
+    margin: 20px auto; 
 }
 
 h1 {

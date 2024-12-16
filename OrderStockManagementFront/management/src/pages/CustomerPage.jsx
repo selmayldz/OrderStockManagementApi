@@ -53,7 +53,7 @@ const CustomerPage = () => {
   }
 
   return (
-    <body>
+    <div className="customers-body">
       <div className="customers-page">
         <h1>Customer List</h1>
         <table className="customers-table">
@@ -90,7 +90,7 @@ const CustomerPage = () => {
           </tbody>
         </table>
       </div>
-    </body>
+    </div>
   );
 };
 

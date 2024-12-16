@@ -9,7 +9,7 @@ const ProductPage = () => {
 
   const fetchProducts = async () => {
     try {
-      console.log('Fetching products with token:', token); // Token'ı kontrol edin
+      console.log('Fetching products with token:', token);
       const response = await fetch('http://localhost:5048/api/Products', {
         method: 'GET',
         headers: {
@@ -23,7 +23,7 @@ const ProductPage = () => {
       }
   
       const data = await response.json();
-      console.log('Products fetched:', data); // Verileri kontrol edin
+      console.log('Products fetched:', data);
       setProducts(data);
     } catch (error) {
       console.error('Error fetching products:', error.message);

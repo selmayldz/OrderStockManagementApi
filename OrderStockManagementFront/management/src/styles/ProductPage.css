@@ -1,20 +1,26 @@
-.products-table {
-    width: 100%;
-    margin-top: 20px;
+.login-body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #000000;
+  background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .products-table table {
-    width: 100%;
-    border-collapse: collapse;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .products-table th, .product-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .products-table th {
-    background-color: #f2f2f2;
-  }
-  
+}

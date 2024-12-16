@@ -12,9 +12,11 @@ import ProfilePage from './pages/ProfilePage';
 import ProfileUpdatePage from './pages/ProfileUpdatePage';
 import AdminPage from './pages/AdminPage';
 import ProductDetail from './pages/ProductDetail';
+import ProductDetailAdmin from './pages/ProductDetailAdmin';
+import ProductEdit from './pages/ProductEdit';
 import CustomerDetail from './pages/CustomerDetail';
 
-
+ProductDetailAdmin
 const App = () => {
   return (
       <Router>
@@ -31,6 +33,8 @@ const App = () => {
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/profile/update" element={<ProfileUpdatePage />} />
               <Route path="/product-detail/:productId" element={<ProductDetail />} />
+              <Route path="/product-details/:productId" element={<ProductDetailAdmin />} />
+              <Route path="//product-edit/:productId" element={<ProductEdit />} />
               <Route path="/customers-details/:customerName" element={<CustomerDetail />} /> 
             </Routes>
       </Router>

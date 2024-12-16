@@ -26,11 +26,12 @@ body {
     }
 }
 
-.customer-detail-page {
+.customerdetail-page {
     font-family: Arial, sans-serif;
     padding: 40px;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 40px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
@@ -38,13 +39,13 @@ body {
     overflow: hidden;
 }
 
-.customer-detail h1 {
+.customerdetail h1 {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 30px;
 }
 
-.customer-detail {
+.customerdetail {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +54,7 @@ body {
     margin-top: 20px;
 }
 
-.customer-photo {
+.customerdetail-photo {
     width: 230px;
     height: 230px;
     border-radius: 115px; 
@@ -61,13 +62,13 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.customer-photo img {
+.customerdetail-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.customer-info {
+.customerdetail-info {
     text-align: left;
     max-width: 600px; 
     padding: 20px;
@@ -76,40 +77,40 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.customer-info h2 {
+.customerdetail-info h2 {
     font-size: 2rem;
     color: #4a4a4a;
     margin-bottom: 15px;
 }
 
-.customer-info p {
+.customerdetail-info p {
     font-size: 1.2rem;
     color: #555;
     margin: 8px 0;
 }
 
-.customer-info strong {
+.customerdetail-info strong {
     font-weight: bold;
     color: #333;
 }
 
 @media (max-width: 768px) {
-    .customer-detail {
+    .customerdetail {
         flex-direction: column;
         align-items: center;
     }
 
-    .customer-photo {
+    .customerdetail-photo {
         width: 180px;
         height: 180px;
     }
 
-    .customer-info {
+    .customerdetail-info {
         max-width: 80%;
         padding: 15px;
     }
 
-    .customer-detail h1 {
+    .customerdetail h1 {
         font-size: 2rem;
         margin-bottom: 20px;
     }

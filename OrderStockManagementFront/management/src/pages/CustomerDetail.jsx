@@ -50,13 +50,13 @@ const CustomerDetail = () => {
 
   return (
     <div className="customer-body">
-        <div className="customer-detail-page">
+        <div className="customerdetail-page">
             <h1>Customer Details</h1>
-            <div className="customer-detail">
-                <div className="customer-photo">
+            <div className="customerdetail">
+                <div className="customerdetail-photo">
                 <img src={customer.customerPhoto} alt={customer.customerName} />
                 </div>
-                <div className="customer-info">
+                <div className="customerdetail-info">
                 <h2>{customer.customerName}</h2>
                 <p><strong>Customer Type:</strong> {customer.customerType}</p>
                 <p><strong>Budget:</strong> ${customer.budget}</p>
