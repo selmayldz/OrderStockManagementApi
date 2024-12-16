@@ -20,6 +20,20 @@ namespace order_stock_management_api.Services
         }
         public async Task<Orders> CreateOrderAsync(Orders order)
         {
+            var product = await _productRepository.GetProductByIdAsync(order.productId);
+
+            if (product == null)
+            {
+                throw new ArgumentException("Product not found.");
+            }
+
+            if (product.stock < order.quantity)
+            {
+                throw new InvalidOperationException("Not enough stock for the requested quantity.");
+            }
+
+            var newStock = product.stock - order.quantity;
+
             await _repository.CreateOrderAsync(order);
             return order;
         }
@@ -29,7 +43,7 @@ namespace order_stock_management_api.Services
             var product = await _productRepository.GetProductByIdAsync(productId);
             if (product == null)
             {
-                Console.WriteLine("Product with the given ID does not exist.");
+                throw new ArgumentException("Product not found.");
             }
             else
             {

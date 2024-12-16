@@ -61,6 +61,10 @@ namespace order_stock_management_api.Controllers
             var customer = await _service.LoginAsync(loginDto.customerName, loginDto.password);
             if (customer == null) return Unauthorized("Invalid credentials.");
 
+            Random random = new Random();
+            customer.budget = random.Next(500, 3001);
+            await _service.UpdateProfileAsync(customer);
+
             var token = JwtHelper.GenerateJwtToken(customer.customerName, customer.customerType, _configuration);
 
             return Ok(new { Token = token });

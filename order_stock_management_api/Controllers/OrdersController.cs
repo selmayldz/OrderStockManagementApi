@@ -40,6 +40,13 @@ namespace order_stock_management_api.Controllers
                     return NotFound("Customer not found.");
                 }
 
+                var totalPrice = await _service.CalculateTotalPrice(orderDto.productId, orderDto.quantity);
+
+                if (customer.budget < totalPrice)
+                {
+                    return BadRequest("Not enough budget for this order.");
+                }
+
                 var order = new Orders
                 {
                     quantity = orderDto.quantity,
@@ -47,12 +54,24 @@ namespace order_stock_management_api.Controllers
                     customerId = customer.customerId,
                     orderDate = DateOnly.FromDateTime(DateTime.Now),
                     orderTime = TimeOnly.FromDateTime(DateTime.Now),
-                    orderStatus = "Pending", 
-                    totalPrice = await _service.CalculateTotalPrice(orderDto.productId, orderDto.quantity)
+                    orderStatus = false, 
+                    totalPrice = totalPrice
                 };
 
                 var createdOrder = await _service.CreateOrderAsync(order);
-                return Ok(createdOrder);
+
+                var createdOrderDto = new CreatedOrderDto
+                {
+                    orderId = createdOrder.orderId,
+                    productId = createdOrder.productId,
+                    quantity = createdOrder.quantity,
+                    totalPrice = createdOrder.totalPrice,
+                    orderDate = createdOrder.orderDate,
+                    orderTime = createdOrder.orderTime,
+                    orderStatus = createdOrder.orderStatus,
+                    customerId = createdOrder.customerId
+                };
+                return Ok(createdOrderDto);
             }
             catch (Exception ex)
             {

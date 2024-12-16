@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace order_stock_management_api.Models
+﻿namespace order_stock_management_api.DataTransferObjects
 {
-    public class Orders
+    public class CreatedOrderDto
     {
-        [Key]
         public int orderId { get; set; }
         public int quantity { get; set; }
         public double totalPrice { get; set; }
@@ -12,9 +9,6 @@ namespace order_stock_management_api.Models
         public TimeOnly orderTime { get; set; }
         public bool orderStatus { get; set; }
         public int customerId { get; set; }
-        public Customers Customer { get; set; }
         public int productId { get; set; }
-        public Products Product { get; set; }
-        public ICollection<Logs> Logs { get; set; }
     }
 }

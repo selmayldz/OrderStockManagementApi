@@ -46,6 +46,17 @@ namespace order_stock_management_api.Repositories
         {
             return await _context.Products.ToListAsync();
         }
+
+        public async Task UpdateProductStockAsync(int productId, int newStock)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            if (product != null)
+            {
+                product.stock = newStock;
+                _context.Products.Update(product);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 
     public interface IProductsRepository
@@ -55,5 +66,6 @@ namespace order_stock_management_api.Repositories
         Task<bool> DeleteProductAsync(int productId);
         Task<Products> GetProductByIdAsync(int productId);
         Task<List<Products>> GetAllProductsAsync();
+        Task UpdateProductStockAsync(int productId, int newStock);
     }
 }
