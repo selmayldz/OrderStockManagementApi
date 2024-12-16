@@ -10,6 +10,7 @@ const AdminPage = () => {
         navigate('/');
       };
 
+
     return (
         <div className="admin-body">
             <div className="admin-page">
@@ -23,7 +24,7 @@ const AdminPage = () => {
                     <button className="admin-nav-button" onClick={() => navigate('/products')}>
                         Product Stock Status
                     </button>
-                    <button className="admin-header-button" onClick={handleLogout}>Logout</button>
+                    <button className="admin-logout-button" onClick={handleLogout}>Logout</button>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Use useParams to access URL parameters
+import { useParams } from 'react-router-dom'; 
 import '../styles/CustomerDetail.css';
 
 const CustomerDetail = () => {
-  const { customerName } = useParams(); // Get the customerName from the URL
+  const { customerName } = useParams();
   const [customer, setCustomer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

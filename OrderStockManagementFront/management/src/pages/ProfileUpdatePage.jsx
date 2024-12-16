@@ -17,7 +17,6 @@ const ProfileUpdatePage = () => {
       return;
     }
 
-    // Fetch current profile data
     fetch('http://localhost:5048/api/Customers/profile', {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -81,7 +80,7 @@ const ProfileUpdatePage = () => {
   };
 
   return (
-    <body>
+    <div className="profile-update-body">
       <div className="profile-update-page">
         <a href="#" className="profile-update-back-button" onClick={handleBack}>← Back</a>
         <h2>Update Profile</h2>
@@ -127,7 +126,7 @@ const ProfileUpdatePage = () => {
           </button>
         </form>
       </div>
-    </body>
+    </div>
   );
 };
 

@@ -37,7 +37,7 @@
     padding: 40px;
     box-sizing: border-box;
     border-radius: 20px;
-    box-shadow: 0px 6px 12px rgba(255, 0, 179, 0.319); 
+    box-shadow: 0px 6px 12px rgba(215, 152, 247, 0.5); 
     transform: scale(1);
     animation: scaleIn 1s ease-out; 
 }
@@ -53,30 +53,6 @@
     }
 }
 
-.admin-header {
-    width: 60%;
-    background-color: #343a40;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 16px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-    font-size: 24px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .admin-navigation {
     display: flex;
     flex-direction: column;
@@ -88,7 +64,7 @@
     padding: 18px 25px;
     font-size: 18px;
     color: white;
-    background-color: #d15b94;
+    background-color: #b282d6;
     border: none;
     margin-top: 40px;
     border-radius: 8px;
@@ -96,7 +72,7 @@
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease-in-out;
     width: 100%;
     text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); 
+    box-shadow: 0px 4px 8px rgba(215, 152, 247, 0.5); 
     animation: bounceIn 1s ease-out; 
 }
 
@@ -115,32 +91,33 @@
 }
 
 .admin-nav-button:hover {
-    background-color: #ff3a57;
+    background-color: #b282d6;
     transform: translateY(-5px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 12px rgba(215, 152, 247, 0.5);
 }
 
 .admin-nav-button:focus {
     outline: none;
-    box-shadow: 0px 0px 0px 3px rgba(255, 225, 0, 0.516);
+    box-shadow: 0px 0px 0px 3px rgba(215, 152, 247, 0.5);
 }
 
-.admin-header-button {
+.admin-logout-button {
     padding: 15px 20px;
     font-size: 18px;
     color: #fff;
-    background-color: #dc3545; 
+    margin-top: 70px;
+    background-color: #9248cb; 
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease-in-out;
     width: 100%;
     text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 8px rgba(215, 152, 247, 0.5);
 }
 
-.admin-header-button:hover {
-    background-color: #c82333;
+.admin-logout-button:hover {
+    background-color: #9248cb;
     transform: translateY(-3px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 12px rgba(215, 152, 247, 0.5);
 }

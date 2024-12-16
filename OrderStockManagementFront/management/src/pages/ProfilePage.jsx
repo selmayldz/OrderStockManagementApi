@@ -60,7 +60,7 @@ const ProfilePage = () => {
           <p><strong>Type:</strong> {profileData.customerType}</p>
           <p><strong>Total Spend:</strong> ${profileData.totalSpend}</p>
         </div>
-        <button className="profile-update-button" onClick={handleProfileUpdate}>
+        <button className="profile-button" onClick={handleProfileUpdate}>
           Update Profile
         </button>
       </div>
