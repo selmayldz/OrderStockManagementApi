@@ -14,7 +14,7 @@ const ProductDetailAdmin = () => {
         description: '',
         productPhoto: '',
     });
-
+  
     useEffect(() => {
         const fetchProduct = async () => {
             try {
@@ -52,9 +52,9 @@ const ProductDetailAdmin = () => {
 
     return (
         <div className="productdetailss-container">
-          <a href="#" className="profile-back-button" onClick={handleBack}>← Back</a>
-          <h1>Edit Product</h1>
-          <form onSubmit={handleSubmit} className="productdetailss-form">
+          <a href="" className="profile-back-button" onClick={handleBack}>← Back</a>
+          <h1>Product Details</h1>
+          <form className="productdetailss-form">
             <div className="productdetailss-form-group">
               <label htmlFor="productName">Product Name</label>
               <input
@@ -63,7 +63,7 @@ const ProductDetailAdmin = () => {
                 name="productName"
                 value={product.productName}
                 onChange={handleChange}
-                required
+                readOnly
               />
             </div>
             <div className="productdetailss-form-group">
@@ -74,7 +74,7 @@ const ProductDetailAdmin = () => {
                 name="stock"
                 value={product.stock}
                 onChange={handleChange}
-                required
+                readOnly
               />
             </div>
             <div className="productdetailss-form-group">
@@ -86,7 +86,7 @@ const ProductDetailAdmin = () => {
                 value={product.price}
                 onChange={handleChange}
                 step="0.01"
-                required
+                readOnly
               />
             </div>
             <div className="productdetailss-form-group">
@@ -96,7 +96,7 @@ const ProductDetailAdmin = () => {
                 name="description"
                 value={product.description}
                 onChange={handleChange}
-                required
+                readOnly
               ></textarea>
             </div>
             <div className="productdetailss-form-group">
@@ -107,16 +107,12 @@ const ProductDetailAdmin = () => {
                 name="productPhoto"
                 value={product.productPhoto}
                 onChange={handleChange}
+                readOnly
               />
             </div>
-            <button type="submit" className="productdetailss-save-button">Save Changes</button>
-            <button type="button" className="productdetailss-cancel-button" onClick={() => navigate('/products')}>
-              Cancel
-            </button>
           </form>
         </div>
     );
 };
-
 
 export default ProductDetailAdmin;

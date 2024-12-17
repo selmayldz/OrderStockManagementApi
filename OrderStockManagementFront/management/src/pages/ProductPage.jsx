@@ -38,10 +38,10 @@ const ProductPage = () => {
     fetchProducts();
   }, [token]);
   
-
+  
   return (
     <div>
-      <h1>Product Page</h1>
+      <h1>Product List</h1>
       <ProductTable products={products} /> 
     </div>
   );

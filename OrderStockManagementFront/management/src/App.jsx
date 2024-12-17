@@ -6,7 +6,6 @@ import CustomerPage from './pages/CustomerPage';
 import ProductPage from './pages/ProductPage';
 import LogPage from './pages/LogPage';
 import PriorityPage from './pages/PriorityPage';
-import OrderPage from './pages/OrderPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import ProfileUpdatePage from './pages/ProfileUpdatePage';
@@ -15,6 +14,7 @@ import ProductDetail from './pages/ProductDetail';
 import ProductDetailAdmin from './pages/ProductDetailAdmin';
 import ProductEdit from './pages/ProductEdit';
 import CustomerDetail from './pages/CustomerDetail';
+import OrdersPage from './pages/OrdersPage';
 
 ProductDetailAdmin
 const App = () => {
@@ -28,7 +28,6 @@ const App = () => {
               <Route path="/products" element={<ProductPage />} />
               <Route path="/logs" element={<LogPage />} />
               <Route path="/priority" element={<PriorityPage />} />
-              <Route path="/orders" element={<OrderPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/profile/update" element={<ProfileUpdatePage />} />
@@ -36,6 +35,7 @@ const App = () => {
               <Route path="/product-details/:productId" element={<ProductDetailAdmin />} />
               <Route path="//product-edit/:productId" element={<ProductEdit />} />
               <Route path="/customers-details/:customerName" element={<CustomerDetail />} /> 
+              <Route path="/myorders" element={<OrdersPage/>} />
             </Routes>
       </Router>
   );
