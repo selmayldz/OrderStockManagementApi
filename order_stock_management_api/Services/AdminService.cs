@@ -10,6 +10,7 @@ namespace order_stock_management_api.Services
     {
         Task<List<ProfileDto>> GetAllUsers(ClaimsPrincipal user);
         Task<Customers> GetCustomerDetailsAsync(string customerName);
+        Task<IEnumerable<CreatedOrderDto>> GetAllOrdersAsync(ClaimsPrincipal user);
     }
 
     public class AdminService : IAdminService
@@ -35,6 +36,24 @@ namespace order_stock_management_api.Services
         {
             var customerType = user.Claims.FirstOrDefault(c => c.Type == "customerType")?.Value;
             return customerType == "admin";
+        }
+        public async Task<IEnumerable<CreatedOrderDto>> GetAllOrdersAsync(ClaimsPrincipal user)
+        {
+            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see all orders.");
+
+            var orders = await _adminRepository.GetAllOrdersAsync();
+
+            return orders.Select(o => new CreatedOrderDto
+            {
+                orderId = o.orderId,
+                quantity = o.quantity,
+                totalPrice = o.totalPrice,
+                orderDate = o.orderDate,
+                orderTime = o.orderTime,
+                orderStatus = o.orderStatus,
+                customerId = o.customerId,
+                productId = o.productId
+            });
         }
     }
 }

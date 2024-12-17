@@ -78,6 +78,28 @@ namespace order_stock_management_api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Error creating order: {ex.Message}");
             }
         }
+        [HttpGet("customers-order")]
+        public async Task<ActionResult<IEnumerable<CreatedOrderDto>>> GetOrdersByCustomer()
+        {
+            try
+            {
+                var customerNameFromToken = HttpContext.User.Claims
+                .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+                if (string.IsNullOrEmpty(customerNameFromToken))
+                {
+                    return Unauthorized("Invalid token.");
+                }
+
+                var result = await _service.GetOrdersByCustomerAsync(customerNameFromToken);
+                return Ok(result);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, ex.Message);
+            }
+
+        }
 
     }
 }

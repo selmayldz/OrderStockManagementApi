@@ -13,10 +13,12 @@ namespace order_stock_management_api.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;
+        private readonly IOrdersService _orderService;
 
-        public AdminController(IAdminService adminService)
+        public AdminController(IAdminService adminService, IOrdersService orderService)
         {
             _adminService = adminService;
+            _orderService = orderService;
         }
 
         [HttpGet("users")]
@@ -49,6 +51,26 @@ namespace order_stock_management_api.Controllers
             };
 
             return Ok(profileDto);
+        }
+        [HttpGet("orders")]
+        public async Task<ActionResult<IEnumerable<CreatedOrderDto>>> GetAllOrders()
+        {
+            var result = await _adminService.GetAllOrdersAsync(User);
+            return Ok(result);
+        }
+
+        [HttpPost("process-orders")]
+        public async Task<IActionResult> ProcessOrders()
+        {
+            try
+            {
+                await _orderService.ProcessOrders();
+                return Ok("Siparişler işlendi.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+            }
         }
 
     }
