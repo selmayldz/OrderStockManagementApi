@@ -81,8 +81,8 @@ const ProfileUpdatePage = () => {
 
   return (
     <div className="profile-update-body">
+      <a href="" className="profile-update-back-button" onClick={handleBack}>← Back</a>
       <div className="profile-update-page">
-        <a href="#" className="profile-update-back-button" onClick={handleBack}>← Back</a>
         <h2>Update Profile</h2>
         <div className="profile-update-form-group">
           <img src={formData.customerPhoto} alt="Preview" className="profile-update-photo-preview" />

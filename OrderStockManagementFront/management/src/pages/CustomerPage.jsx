@@ -44,16 +44,17 @@ const CustomerPage = () => {
     navigate(`/customers-details/${customer.customerName}`);
   };
 
+  const handleBack = () => {
+    navigate('/admin');
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   return (
     <div className="customers-body">
+      <a href="" className="profile-back-button" onClick={handleBack}>← Back</a>
       <div className="customers-page">
         <h1>Customer List</h1>
         <table className="customers-table">

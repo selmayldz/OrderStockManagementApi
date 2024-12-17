@@ -46,8 +46,8 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-body">
+      <a href="" className="profile-back-button" onClick={handleBack}>← Back</a>
       <div className="profile-page">
-        <a href="#" class="profile-back-button" onClick={handleBack}>← Back</a>
         <h2>Profile</h2>
         <div className="profile-profile-details">
           <img

@@ -34,63 +34,70 @@ const ProductTable = ({ products }) => {
     }
   };
   
+  const handleBack = () => {
+    navigate('/admin');
+  };
+  
   return (
-    <div className="products-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Details</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, index) => (
-            <tr key={index}>
-              <td>
-                <img
-                  src={product.productPhoto}
-                  alt={product.productName}
-                  style={{ width: '100px', height: 'auto' }}
-                />
-              </td>
-              <td>{product.productName}</td>
-              <td>{product.description}</td>
-              <td>${product.price}</td>
-              <td>{product.stock}</td>
-              <td>
-                <button
-                  className="details-button"
-                  onClick={() => navigate(`/product-details/${product.productId}`)}
-                >
-                  Details
-                </button>
-              </td>
-              <td>
-                <button
-                  className="edit-button"
-                  onClick={() => navigate(`/product-edit/${product.productId}`)}
-                >
-                  Edit
-                </button>
-              </td>
-              <td>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDelete(product.productId)}
-                >
-                  Delete
-                </button>
-              </td>
+    <div>
+      <a href="" className="profile-back-button" onClick={handleBack}>← Back</a>
+      <div className="products-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Details</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <tr key={index}>
+                <td>
+                  <img
+                    src={product.productPhoto}
+                    alt={product.productName}
+                    style={{ width: '100px', height: 'auto' }}
+                  />
+                </td>
+                <td>{product.productName}</td>
+                <td>{product.description}</td>
+                <td>${product.price}</td>
+                <td>{product.stock}</td>
+                <td>
+                  <button
+                    className="details-button"
+                    onClick={() => navigate(`/product-details/${product.productId}`)}
+                  >
+                    Details
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="edit-button"
+                    onClick={() => navigate(`/product-edit/${product.productId}`)}
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDelete(product.productId)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

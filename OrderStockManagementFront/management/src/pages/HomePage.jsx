@@ -10,6 +10,10 @@ const HomePage = () => {
     navigate('/profile');
   };
 
+  const handleOrders = () => {
+    navigate('/myorders');
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     navigate('/');
@@ -61,12 +65,14 @@ const HomePage = () => {
             <h1 className="home-app-name">Öz Elbistanlılar Trendyol</h1>
           </div>
           <div className="home-header-buttons">
-            <button className="home-header-button">My Orders</button>
-            <button className="home-header-button" onClick={handleProfile}>Profile</button>
-            <button className="home-header-button" onClick={handleLogout}>Logout</button>
+            <div className="home-header-buttons">
+                <button className="home-header-button" onClick={handleOrders}>My Orders</button>
+                <button className="home-header-button" onClick={handleProfile}>Profile</button>
+                <button className="home-header-button" onClick={handleLogout}>Logout</button>
+            </div>
           </div>
         </header>
-        
+    
         <div className="home-products-container">
           {products.length > 0 ? (
             products.map((product) => (

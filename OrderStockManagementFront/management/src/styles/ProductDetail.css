@@ -140,24 +140,22 @@
   line-height: 1.5;
 }
 
-.product-quantity-selector {
-  margin: 20px 0;
-  font-size: 16px;
+.product-quantity {
+  margin: 10px 0;
   display: flex;
   align-items: center;
 }
 
-.product-quantity-selector label {
+.product-quantity label {
   margin-right: 10px;
   font-weight: bold;
 }
 
-.product-quantity-selector select {
-  padding: 5px 10px;
+.product-quantity select {
+  padding: 5px;
   font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
 }
+
 
 .product-action-buttons {
   display: flex;
