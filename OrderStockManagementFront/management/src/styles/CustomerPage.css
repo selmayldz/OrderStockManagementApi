@@ -41,16 +41,37 @@ h1 {
 }
 
 .customers-table {
-    width: 100%;
+    width: 60vw;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 10px auto; 
+    background: linear-gradient(135deg, #ffffff, #f8f8f8); 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .customers-table th, .customers-table td {
-    padding: 12px;
+    padding: 14px; 
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-size: 16px; 
+    background-color: rgba(255, 255, 255, 0.9); 
 }
+
+.customers-table th {
+    background-color: #b282d6;
+    color: white;
+    font-weight: bold;
+}
+
+.customers-table tr:nth-child(even) {
+    background-color: #f8f8f8; 
+}
+
+.customers-table tr:hover {
+    background-color: rgba(178, 130, 214, 0.1); 
+}
+
 
 .customers-photo {
     width: 50px;

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/ProductPage.css'; 
 import ProductTable from '../components/ProductStockPanel/ProductTable.jsx';
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('authToken');
-  console.log('Token:', token);
-
+  const navigate = useNavigate();
+  
   const fetchProducts = async () => {
     try {
       console.log('Fetching products with token:', token);
@@ -40,11 +41,20 @@ const ProductPage = () => {
   
   
   return (
-    <div>
+    <div className="product-page">
       <h1>Product List</h1>
-      <ProductTable products={products} /> 
+      <button 
+          className="add-product-button" 
+          onClick={() => navigate('/productadd')}
+        >
+          New Product
+      </button>
+      <div className="product-table-container">
+        <ProductTable products={products} /> 
+      </div>
     </div>
   );
+  
 };
 
 export default ProductPage;
