@@ -14,7 +14,6 @@ const OrdersPage = () => {
 
   const handlePlaceAllOrders = async () => {
     try {
-      // Tüm siparişleri tek tek backend'e gönder
       for (const product of cart) {
         const response = await fetch('http://localhost:5048/api/Orders', {
           method: 'POST',
@@ -32,13 +31,13 @@ const OrdersPage = () => {
           throw new Error('Failed to place all orders');
         }
   
-        const order = await response.json(); // Sipariş detaylarını al
+        const order = await response.json(); 
         console.log('Order placed successfully:', order);
       }
   
       alert('All orders placed successfully!');
-      setCart([]); // Sepeti temizle
-      localStorage.removeItem('cart'); // Local storage'dan kaldır
+      setCart([]);
+      localStorage.removeItem('cart'); 
     } catch (error) {
       console.error('Error placing all orders:', error);
       alert('Failed to place the orders.');
@@ -82,7 +81,7 @@ const OrdersPage = () => {
               onClick={handlePlaceAllOrders}
               className="place-all-orders-button"
             >
-              Tüm Siparişleri Ver
+              Order Now
             </button>
           </>
         )}

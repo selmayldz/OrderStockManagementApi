@@ -13,8 +13,10 @@ import AdminPage from './pages/AdminPage';
 import ProductDetail from './pages/ProductDetail';
 import ProductDetailAdmin from './pages/ProductDetailAdmin';
 import ProductEdit from './pages/ProductEdit';
+import ProductAdd from './pages/ProductAdd';
 import CustomerDetail from './pages/CustomerDetail';
 import OrdersPage from './pages/OrdersPage';
+import CustomersAllOrders from './pages/CustomersAllOrders'
 
 ProductDetailAdmin
 const App = () => {
@@ -33,9 +35,11 @@ const App = () => {
               <Route path="/profile/update" element={<ProfileUpdatePage />} />
               <Route path="/product-detail/:productId" element={<ProductDetail />} />
               <Route path="/product-details/:productId" element={<ProductDetailAdmin />} />
-              <Route path="//product-edit/:productId" element={<ProductEdit />} />
+              <Route path="/product-edit/:productId" element={<ProductEdit />} />
+              <Route path="/productadd" element={<ProductAdd />} />
               <Route path="/customers-details/:customerName" element={<CustomerDetail />} /> 
               <Route path="/myorders" element={<OrdersPage/>} />
+              <Route path="/customerorders" element={<CustomersAllOrders/>} />
             </Routes>
       </Router>
   );
