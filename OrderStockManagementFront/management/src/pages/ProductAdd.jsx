@@ -31,13 +31,13 @@ const ProductAdd = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Ürün eklenemedi.');
+        throw new Error('The product could not be added.');
       }
-      alert('Ürün başarıyla eklendi.');
+      alert('The product was successfully added.');
       navigate('/products');
     } catch (error) {
       console.error('Error:', error);
-      alert('Ürün ekleme işlemi başarısız.');
+      alert('The product addition process failed.');
     }
   };
 

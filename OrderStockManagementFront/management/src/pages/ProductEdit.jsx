@@ -9,6 +9,7 @@ const ProductEdit = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
   const [product, setProduct] = useState({
     productId: null,
     productName: '',

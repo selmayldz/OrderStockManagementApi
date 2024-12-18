@@ -50,15 +50,17 @@ const ProductDetail = () => {
     const newItem = {
       productId: product.productId,
       productName: product.productName,
+      productPhoto: product.productPhoto, 
       price: product.price,
       quantity,
     };
-
+  
     cart.push(newItem);
     localStorage.setItem('cart', JSON.stringify(cart));
     alert('Product added to cart!');
-    navigate('/myorders'); // Kullanıcıyı sepet sayfasına yönlendir
+    navigate('/myorders'); 
   };
+  
 
   const handleQuantityChange = (event) => {
     const value = parseInt(event.target.value, 10);
@@ -76,7 +78,7 @@ const ProductDetail = () => {
       <header className="product-header">
         <div className="product-logo-container">
           <img src="/logo.png" alt="Logo" className="product-logo" />
-          <h1 className="product-app-name">Öz Elbistanlılar Trendyol</h1>
+          <h1 className="product-app-name">Öz Elbistanlılar</h1>
         </div>
       </header>
 

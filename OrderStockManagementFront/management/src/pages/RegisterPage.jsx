@@ -46,11 +46,11 @@ const RegisterPage = () => {
         return response.json();
       })
       .then(data => {
-        console.log('Kayıt başarılı:', data);
+        console.log('Registration successful:', data);
         navigate('/');
       })
       .catch(error => {
-        console.error('Kayıt başarısız:', error);
+        console.error('Registration failed:', error);
         alert('Registration failed. Please try again later.');
       });
   };
