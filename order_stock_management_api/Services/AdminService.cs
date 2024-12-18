@@ -8,7 +8,7 @@ namespace order_stock_management_api.Services
 {
     public interface IAdminService
     {
-        Task<List<ProfileDto>> GetAllUsers(ClaimsPrincipal user);
+        Task<List<ProfileForAdminDto>> GetAllUsers(ClaimsPrincipal user);
         Task<Customers> GetCustomerDetailsAsync(string customerName);
         Task<IEnumerable<CreatedOrderDto>> GetAllOrdersAsync(ClaimsPrincipal user);
         Task<IEnumerable<CreatedOrderDto>> GetOrdersByFalseStatus(ClaimsPrincipal user);
@@ -25,7 +25,7 @@ namespace order_stock_management_api.Services
             _adminRepository = adminRepository;
         }
 
-        public async Task<List<ProfileDto>> GetAllUsers(ClaimsPrincipal user)
+        public async Task<List<ProfileForAdminDto>> GetAllUsers(ClaimsPrincipal user)
         {
             if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see users.");
             return await _adminRepository.GetAllUsers();
@@ -108,8 +108,8 @@ namespace order_stock_management_api.Services
                 logDate = l.logDate,
                 logType = l.logType,
                 logDetails = l.logDetails,
-                customerId = l.customerId,
-                orderId = l.orderId,
+                Customer = l.Customer,
+                Order = l.Order,
             });
         }
     }

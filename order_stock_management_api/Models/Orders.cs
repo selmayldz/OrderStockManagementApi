@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace order_stock_management_api.Models
 {
@@ -15,6 +16,8 @@ namespace order_stock_management_api.Models
         public Customers Customer { get; set; }
         public int productId { get; set; }
         public Products Product { get; set; }
+
+        [JsonIgnore]
         public ICollection<Logs> Logs { get; set; }
     }
 }

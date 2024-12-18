@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace order_stock_management_api.Models
 {
@@ -12,7 +13,12 @@ namespace order_stock_management_api.Models
         public string customerType { get; set; }
         public int totalSpend { get; set; }
         public string customerPhoto { get; set; }
+        public double? waitingTime { get; set; }
+        public double? priorityScore { get; set; }
+
+        [JsonIgnore]
         public ICollection<Logs> Logs { get; set; }
+        [JsonIgnore]
         public ICollection<Orders> Orders { get; set; }
 
     }

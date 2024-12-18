@@ -82,7 +82,7 @@ namespace order_stock_management_api.Services
         public async Task ProcessOrders()
         {
             var orders = await _repository.GetAllPendingOrders();
-            var priorityQueue = new ConcurrentQueue<Orders>(orders.OrderByDescending(o => CalculatePriorityScore(o)));
+            var priorityQueue = new ConcurrentQueue<Orders>(orders.OrderByDescending(o => CalculatePriorityScore(o, o.Customer)));
 
             var processedOrders = new HashSet<int>(); 
 
@@ -181,7 +181,7 @@ namespace order_stock_management_api.Services
         }
 
 
-        private double CalculatePriorityScore(Orders order)
+        private double CalculatePriorityScore(Orders order, Customers customer)
         {
             var customerTypeScore = order.Customer.customerType == "Premium" ? 15 : 10;
 
@@ -189,7 +189,13 @@ namespace order_stock_management_api.Services
 
             var waitingTime = (DateTime.Now - createdAt).TotalSeconds;
 
-            return customerTypeScore + (waitingTime * 0.5);
+            var priorityScore = customerTypeScore + (waitingTime * 0.5);
+
+            customer.priorityScore = priorityScore;
+
+            customer.waitingTime = waitingTime;
+
+            return priorityScore;
         }
     }
 }

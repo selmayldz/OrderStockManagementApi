@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace order_stock_management_api.Models
 {
@@ -11,6 +12,8 @@ namespace order_stock_management_api.Models
         public double price { get; set; }
         public string description { get; set; }
         public string productPhoto { get; set; }
+
+        [JsonIgnore]
         public ICollection<Orders> Orders { get; set; }
     }
 }
