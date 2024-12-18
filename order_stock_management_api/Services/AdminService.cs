@@ -54,8 +54,8 @@ namespace order_stock_management_api.Services
                 orderDate = o.orderDate,
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
-                customerId = o.customerId,
-                productId = o.productId
+                productName = o.Product.productName,
+                customerName = o.Customer.customerName
             });
         }
         public async Task<IEnumerable<CreatedOrderDto>> GetOrdersByFalseStatus(ClaimsPrincipal user)
@@ -72,8 +72,8 @@ namespace order_stock_management_api.Services
                 orderDate = o.orderDate,
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
-                customerId = o.customerId,
-                productId = o.productId
+                customerName = o.Customer.customerName,
+                productName = o.Product.productName
             });
         }
 
@@ -91,8 +91,8 @@ namespace order_stock_management_api.Services
                 orderDate = o.orderDate,
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
-                customerId = o.customerId,
-                productId = o.productId
+                customerName = o.Customer.customerName,
+                productName = o.Product.productName
             });
         }
 
@@ -108,8 +108,10 @@ namespace order_stock_management_api.Services
                 logDate = l.logDate,
                 logType = l.logType,
                 logDetails = l.logDetails,
-                Customer = l.Customer,
-                Order = l.Order,
+                customerName = l.Customer.customerName,
+                customerType = l.Customer.customerType,
+                quantity = l.Order.quantity,
+                productName = l.Order.Product.productName
             });
         }
     }

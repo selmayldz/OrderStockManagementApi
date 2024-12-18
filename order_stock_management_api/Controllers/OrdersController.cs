@@ -63,13 +63,13 @@ namespace order_stock_management_api.Controllers
                 var createdOrderDto = new CreatedOrderDto
                 {
                     orderId = createdOrder.orderId,
-                    productId = createdOrder.productId,
+                    productName = createdOrder.Product.productName,
                     quantity = createdOrder.quantity,
                     totalPrice = createdOrder.totalPrice,
                     orderDate = createdOrder.orderDate,
                     orderTime = createdOrder.orderTime,
                     orderStatus = createdOrder.orderStatus,
-                    customerId = createdOrder.customerId
+                    customerName = createdOrder.Customer.customerName
                 };
                 return Ok(createdOrderDto);
             }

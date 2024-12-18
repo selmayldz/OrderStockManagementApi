@@ -8,7 +8,9 @@ namespace order_stock_management_api.DataTransferObjects
         public DateTime logDate { get; set; }
         public string logType { get; set; }
         public string logDetails { get; set; }
-        public Customers Customer { get; set; }
-        public Orders Order { get; set; }
+        public string customerName { get; set; }
+        public string customerType { get; set; }
+        public int quantity { get; set; }
+        public string productName { get; set; }
     }
 }

@@ -75,8 +75,8 @@ namespace order_stock_management_api.Services
                 orderDate = o.orderDate,
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
-                customerId = o.customerId,
-                productId = o.productId
+                customerName = o.Customer.customerName,
+                productName = o.Product.productName
             });
         }
         public async Task ProcessOrders()

@@ -74,6 +74,7 @@ namespace order_stock_management_api.Repositories
             return await _context.Logs
                 .Include(o => o.Customer)
                 .Include(o => o.Order)
+                .Include(o => o.Order.Product)
                 .ToListAsync();
         }
     }
