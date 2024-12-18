@@ -9,6 +9,7 @@ namespace order_stock_management_api.Repositories
     {
         Task<List<ProfileDto>> GetAllUsers();
         Task<Customers> GetCustomerDetailsAsync(string customerName);
+        Task<List<Orders>> GetAllOrdersAsync();
     }
 
     public class AdminRepository : IAdminRepository
@@ -35,6 +36,14 @@ namespace order_stock_management_api.Repositories
         public async Task<Customers> GetCustomerDetailsAsync(string customerName)
         {
             return await _context.Set<Customers>().FirstOrDefaultAsync(c => c.customerName == customerName);
+        }
+
+        public async Task<List<Orders>> GetAllOrdersAsync()
+        {
+            return await _context.Orders
+                .Include(o => o.Customer)
+                .Include(o => o.Product)
+                .ToListAsync();
         }
     }
 }
