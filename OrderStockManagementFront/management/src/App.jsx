@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage';
 import CustomerPage from './pages/CustomerPage';
 import ProductPage from './pages/ProductPage';
 import LogPage from './pages/LogPage';
-import PriorityPage from './pages/PriorityPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import ProfileUpdatePage from './pages/ProfileUpdatePage';
@@ -29,7 +28,6 @@ const App = () => {
               <Route path="/customers" element={<CustomerPage />} />
               <Route path="/products" element={<ProductPage />} />
               <Route path="/logs" element={<LogPage />} />
-              <Route path="/priority" element={<PriorityPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/profile/update" element={<ProfileUpdatePage />} />

@@ -6,6 +6,7 @@ const ProductDetailAdmin = () => {
     const { productId } = useParams(); 
     const token = localStorage.getItem('authToken'); 
     const navigate = useNavigate();
+    
     const [product, setProduct] = useState({
         productId: null,
         productName: '',

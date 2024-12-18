@@ -8,7 +8,7 @@ const AdminPage = () => {
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         navigate('/');
-      };
+    };
 
 
     return (

@@ -1,0 +1,96 @@
+.login-body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #000000;
+    background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+.customersallorders-container {
+    font-family: Arial, sans-serif;
+    margin-top: 60px;
+    margin: 20px;
+    background-color: #b282d6a9;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-y: auto;
+  }
+    
+  .customersallorders-process-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border: 2px solid #b282d6;
+    color: #b282d6;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(193, 141, 235, 0.4);
+  }
+  
+  .customersallorders-process-btn:hover {
+    background-color: #6200ad84;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  
+  .customersallorders-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .customersallorders-orders-table th, .customersallorders-orders-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .customersallorders-orders-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .customersallorders-orders-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .customersallorders-orders-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .customersallorders-orders-table td,
+  .customersallorders-orders-table th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
