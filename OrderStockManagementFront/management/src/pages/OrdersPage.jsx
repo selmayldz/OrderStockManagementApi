@@ -50,7 +50,7 @@ const OrdersPage = () => {
 
   return (
     <div>
-      <a href="#" className="profile-back-button" onClick={handleBack}>
+      <a href="" className="profile-back-button" onClick={handleBack}>
         ← Back
       </a>
       <div className="orders-table">
