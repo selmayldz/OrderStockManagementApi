@@ -73,5 +73,46 @@ namespace order_stock_management_api.Controllers
             }
         }
 
+        [HttpGet("false-status-orders")]
+        public async Task<ActionResult<IEnumerable<CreatedOrderDto>>> GetOrdersByFalseStatus()
+        {
+            try
+            {
+                var result = await _adminService.GetOrdersByFalseStatus(User);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+            }
+        }
+        [HttpGet("true-status-orders")]
+        public async Task<ActionResult<IEnumerable<CreatedOrderDto>>> GetOrdersByTrueStatus()
+        {
+            try
+            {
+                var result = await _adminService.GetOrdersByTrueStatus(User);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+            }
+        }
+
+        [HttpGet("logs")]
+        public async Task<ActionResult<IEnumerable<Logs>>> GetLogs()
+        {
+            try
+            {
+                var logs = await _adminService.GetLogsAsync(User);
+                return Ok(logs);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+            }
+        }
+
     }
 }

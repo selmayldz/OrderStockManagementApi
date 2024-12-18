@@ -149,7 +149,11 @@ namespace order_stock_management_api.Services
                     var newBudget = order.Customer.budget;
                     newBudget -= (int)order.totalPrice;
                     order.Customer.budget = newBudget;
-                    order.Customer.totalSpend = (int)order.totalPrice;
+                    order.Customer.totalSpend += (int)order.totalPrice;
+                    if (order.Customer.customerType == "Standart" && order.Customer.totalSpend > 2000)
+                    {
+                        order.Customer.customerType = "Premium";
+                    }
                     await _customerRepository.UpdateProfileAsync(order.Customer);
                     logType = "Bilgilendirme";
                     logDetails = "Satın alma başarılı";

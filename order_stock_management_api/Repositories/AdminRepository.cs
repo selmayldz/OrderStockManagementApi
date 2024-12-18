@@ -10,6 +10,9 @@ namespace order_stock_management_api.Repositories
         Task<List<ProfileDto>> GetAllUsers();
         Task<Customers> GetCustomerDetailsAsync(string customerName);
         Task<List<Orders>> GetAllOrdersAsync();
+        Task<List<Orders>> GetOrdersByFalseStatus();
+        Task<List<Orders>> GetOrdersByTrueStatus();
+        Task<List<Logs>> GetLogsAsync();
     }
 
     public class AdminRepository : IAdminRepository
@@ -43,6 +46,32 @@ namespace order_stock_management_api.Repositories
             return await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Product)
+                .ToListAsync();
+        }
+
+        public async Task<List<Orders>> GetOrdersByFalseStatus()
+        {
+            return await _context.Orders
+                .Include(o => o.Customer)
+                .Include(o => o.Product)
+                .Where(o => o.orderStatus == false)
+                .ToListAsync();
+        }
+
+        public async Task<List<Orders>> GetOrdersByTrueStatus()
+        {
+            return await _context.Orders
+                .Include(o => o.Customer)
+                .Include(o => o.Product)
+                .Where(o => o.orderStatus == true)
+                .ToListAsync();
+        }
+
+        public async Task<List<Logs>> GetLogsAsync()
+        {
+            return await _context.Logs
+                .Include(o => o.Customer)
+                .Include(o => o.Order)
                 .ToListAsync();
         }
     }

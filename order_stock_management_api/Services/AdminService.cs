@@ -11,6 +11,9 @@ namespace order_stock_management_api.Services
         Task<List<ProfileDto>> GetAllUsers(ClaimsPrincipal user);
         Task<Customers> GetCustomerDetailsAsync(string customerName);
         Task<IEnumerable<CreatedOrderDto>> GetAllOrdersAsync(ClaimsPrincipal user);
+        Task<IEnumerable<CreatedOrderDto>> GetOrdersByFalseStatus(ClaimsPrincipal user);
+        Task<IEnumerable<CreatedOrderDto>> GetOrdersByTrueStatus(ClaimsPrincipal user);
+        Task<IEnumerable<LogDto>> GetLogsAsync(ClaimsPrincipal user);
     }
 
     public class AdminService : IAdminService
@@ -53,6 +56,60 @@ namespace order_stock_management_api.Services
                 orderStatus = o.orderStatus,
                 customerId = o.customerId,
                 productId = o.productId
+            });
+        }
+        public async Task<IEnumerable<CreatedOrderDto>> GetOrdersByFalseStatus(ClaimsPrincipal user)
+        {
+            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see orders with false status.");
+
+            var orders = await _adminRepository.GetOrdersByFalseStatus();
+
+            return orders.Select(o => new CreatedOrderDto
+            {
+                orderId = o.orderId,
+                quantity = o.quantity,
+                totalPrice = o.totalPrice,
+                orderDate = o.orderDate,
+                orderTime = o.orderTime,
+                orderStatus = o.orderStatus,
+                customerId = o.customerId,
+                productId = o.productId
+            });
+        }
+
+        public async Task<IEnumerable<CreatedOrderDto>> GetOrdersByTrueStatus(ClaimsPrincipal user)
+        {
+            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see orders with false status.");
+
+            var orders = await _adminRepository.GetOrdersByTrueStatus();
+
+            return orders.Select(o => new CreatedOrderDto
+            {
+                orderId = o.orderId,
+                quantity = o.quantity,
+                totalPrice = o.totalPrice,
+                orderDate = o.orderDate,
+                orderTime = o.orderTime,
+                orderStatus = o.orderStatus,
+                customerId = o.customerId,
+                productId = o.productId
+            });
+        }
+
+        public async Task<IEnumerable<LogDto>> GetLogsAsync(ClaimsPrincipal user)
+        {
+            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see logs.");
+
+            var logs = await _adminRepository.GetLogsAsync();
+
+            return logs.Select(l => new LogDto
+            {
+                logId = l.logId,
+                logDate = l.logDate,
+                logType = l.logType,
+                logDetails = l.logDetails,
+                customerId = l.customerId,
+                orderId = l.orderId,
             });
         }
     }
