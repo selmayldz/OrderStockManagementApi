@@ -65,6 +65,13 @@ const CustomerDetail = () => {
     return <div>Customer not found</div>;
   }
 
+  const getOrderStatus = (isSuccess) => {
+    if (isSuccess === 0) return 'Unsuccessful';
+    if (isSuccess === -1) return 'Pending';
+    if (isSuccess === 1) return 'Successful';
+    return 'Unknown';  
+  };
+
   const handleBack = () => {
     navigate('/customers');
   };
@@ -107,7 +114,7 @@ const CustomerDetail = () => {
                     <td>{order.quantity}</td>
                     <td>${order.totalPrice}</td>
                     <td>{order.orderDate} {order.orderTime.split(':').slice(0, 2).join(':')}</td>
-                    <td>{order.orderStatus ? 'Completed' : 'Pending'}</td>
+                    <td>{getOrderStatus(order.isSuccess)}</td>
                   </tr>
                 ))}
               </tbody>

@@ -58,9 +58,9 @@ const ProductTable = ({ products }) => {
           </thead>
           <tbody>
             {products.map((product, index) => {
-              const remainingStock = 200 - product.stock; 
+              const remainingStock = 500 - product.stock; 
 
-              const isCriticalStock = product.stock < 5;
+              const isCriticalStock = product.stock < 20;
 
               const doughnutData = {
                 labels: ['Stock Q.', 'Empty Q.'],
@@ -69,8 +69,8 @@ const ProductTable = ({ products }) => {
                     label: 'Stock Q.',
                     data: [product.stock, remainingStock], 
                     backgroundColor: [
-                      isCriticalStock ? 'rgba(255, 0, 0, 1)' : 'rgba(153, 50, 204, 0.6)', 
-                      isCriticalStock ? 'rgba(255, 99, 132, 0.6)' : 'rgba(75, 192, 192, 1)',
+                      isCriticalStock ? 'rgba(255, 0, 0, 1)' : 'rgba(75, 192, 192, 1)', 
+                      isCriticalStock ? 'rgba(166, 89, 204, 0.6)' : 'rgba(166, 89, 204, 0.6)',
                     ], 
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 0,
