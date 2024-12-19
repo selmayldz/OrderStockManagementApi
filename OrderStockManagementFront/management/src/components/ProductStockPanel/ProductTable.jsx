@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; 
-import { Doughnut } from 'react-chartjs-2'; // Doughnut grafiği için import
+import { Doughnut } from 'react-chartjs-2'; 
 import '../../styles/ProductTable.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
-// Chart.js modüllerini kaydediyoruz
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ProductTable = ({ products }) => {
