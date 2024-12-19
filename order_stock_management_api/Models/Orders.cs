@@ -12,6 +12,7 @@ namespace order_stock_management_api.Models
         public DateOnly orderDate { get; set; }
         public TimeOnly orderTime { get; set; }
         public bool orderStatus { get; set; }
+        public int isSuccess { get; set; }
         public int customerId { get; set; }
         public Customers Customer { get; set; }
         public int productId { get; set; }

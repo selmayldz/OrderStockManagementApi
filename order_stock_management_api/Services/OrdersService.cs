@@ -76,7 +76,8 @@ namespace order_stock_management_api.Services
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
                 customerName = o.Customer.customerName,
-                productName = o.Product.productName
+                productName = o.Product.productName,
+                isSuccess = o.isSuccess
             });
         }
         public async Task ProcessOrders()
@@ -127,7 +128,7 @@ namespace order_stock_management_api.Services
                 await _repository.AddLog(timeoutLog);
                 await _hubContext.Clients.All.SendAsync("ReceiveLog", timeoutLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true, 0); 
                 return;
             }
 
@@ -145,7 +146,7 @@ namespace order_stock_management_api.Services
                 await _repository.AddLog(deletedProductLog);
                 await _hubContext.Clients.All.SendAsync("ReceiveLog", deletedProductLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true, 0); 
                 return;
             }
 
@@ -164,7 +165,7 @@ namespace order_stock_management_api.Services
                 await _repository.AddLog(insufficientStockLog);
                 await _hubContext.Clients.All.SendAsync("ReceiveLog", insufficientStockLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true, 0); 
                 return;
             }
 
@@ -182,7 +183,7 @@ namespace order_stock_management_api.Services
                 await _repository.AddLog(insufficientBudgetLog);
                 await _hubContext.Clients.All.SendAsync("ReceiveLog", insufficientBudgetLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true, 0); 
                 return;
             }
 
@@ -201,7 +202,7 @@ namespace order_stock_management_api.Services
                 await _repository.AddLog(stockDeductionErrorLog);
                 await _hubContext.Clients.All.SendAsync("ReceiveLog", stockDeductionErrorLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true, 0); 
                 return;
             }
 
@@ -229,7 +230,7 @@ namespace order_stock_management_api.Services
                 await _repository.AddLog(successLog);
                 await _hubContext.Clients.All.SendAsync("ReceiveLog", successLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true, 1); 
             }
             catch (Exception ex)
             {
@@ -245,7 +246,7 @@ namespace order_stock_management_api.Services
                 await _repository.AddLog(databaseErrorLog);
                 await _hubContext.Clients.All.SendAsync("ReceiveLog", databaseErrorLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true, 0); 
             }
         }
 

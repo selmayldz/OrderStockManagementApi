@@ -9,7 +9,7 @@ namespace order_stock_management_api.Repositories
         Task<Orders> CreateOrderAsync(Orders order);
         Task<List<Orders>> GetOrdersByCustomerIdAsync(string customerName);
         Task<List<Orders>> GetAllPendingOrders();
-        Task UpdateOrderStatus(int orderId, bool status);
+        Task UpdateOrderStatus(int orderId, bool status, int isSuccess);
         Task<Customers> GetCustomerById(int customerId);
         Task AddLog(Logs log);
         Task<bool> CheckStockAvailability(int productId, int quantity);
@@ -47,12 +47,13 @@ namespace order_stock_management_api.Repositories
                 .ToListAsync();
         }
 
-        public async Task UpdateOrderStatus(int orderId, bool status)
+        public async Task UpdateOrderStatus(int orderId, bool status, int isSuccess)
         {
             var order = await _context.Orders.FindAsync(orderId);
             if (order != null)
             {
                 order.orderStatus = status;
+                order.isSuccess = isSuccess;
                 await _context.SaveChangesAsync();
             }
         }

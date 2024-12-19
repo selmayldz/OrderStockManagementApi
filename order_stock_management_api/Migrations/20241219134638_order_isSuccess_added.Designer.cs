@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using order_stock_management_api.Data;
 
@@ -11,9 +12,11 @@ using order_stock_management_api.Data;
 namespace order_stock_management_api.Migrations
 {
     [DbContext(typeof(OrderStockManagementContext))]
-    partial class OrderStockManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20241219134638_order_isSuccess_added")]
+    partial class order_isSuccess_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,10 +111,8 @@ namespace order_stock_management_api.Migrations
                     b.Property<int>("customerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("isSuccess")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(-1);
+                    b.Property<bool?>("isSuccess")
+                        .HasColumnType("bit");
 
                     b.Property<DateOnly>("orderDate")
                         .HasColumnType("date");

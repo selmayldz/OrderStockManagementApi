@@ -41,6 +41,10 @@ namespace order_stock_management_api.Data
                 .HasForeignKey(o => o.productId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Orders>()
+                .Property(p => p.isSuccess)
+                .HasDefaultValue(-1);
+
             modelBuilder.Entity<Products>()
                 .Property(p => p.isDeleted)
                 .HasDefaultValue(false);

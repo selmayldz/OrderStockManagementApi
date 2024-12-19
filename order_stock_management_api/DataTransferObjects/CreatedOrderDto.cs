@@ -10,5 +10,6 @@
         public bool orderStatus { get; set; }
         public string customerName { get; set; }
         public string productName { get; set; }
+        public int isSuccess { get; set; }
     }
 }
