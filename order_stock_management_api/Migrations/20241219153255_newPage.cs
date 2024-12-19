@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace order_stock_management_api.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class newPage : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,10 +18,13 @@ namespace order_stock_management_api.Migrations
                     customerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     customerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     budget = table.Column<int>(type: "int", nullable: false),
                     customerType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     totalSpend = table.Column<int>(type: "int", nullable: false),
-                    customerPhoto = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    customerPhoto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    waitingTime = table.Column<double>(type: "float", nullable: true),
+                    priorityScore = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,7 +41,8 @@ namespace order_stock_management_api.Migrations
                     stock = table.Column<int>(type: "int", nullable: false),
                     price = table.Column<double>(type: "float", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    productPhoto = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    productPhoto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -55,7 +59,8 @@ namespace order_stock_management_api.Migrations
                     totalPrice = table.Column<double>(type: "float", nullable: false),
                     orderDate = table.Column<DateOnly>(type: "date", nullable: false),
                     orderTime = table.Column<TimeOnly>(type: "time", nullable: false),
-                    orderStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    orderStatus = table.Column<bool>(type: "bit", nullable: false),
+                    isSuccess = table.Column<int>(type: "int", nullable: false, defaultValue: -1),
                     customerId = table.Column<int>(type: "int", nullable: false),
                     productId = table.Column<int>(type: "int", nullable: false)
                 },

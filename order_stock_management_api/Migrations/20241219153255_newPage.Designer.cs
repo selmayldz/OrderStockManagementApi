@@ -12,8 +12,8 @@ using order_stock_management_api.Data;
 namespace order_stock_management_api.Migrations
 {
     [DbContext(typeof(OrderStockManagementContext))]
-    [Migration("20241216203647_changed_orderStatus")]
-    partial class changed_orderStatus
+    [Migration("20241219153255_newPage")]
+    partial class newPage
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,8 +52,14 @@ namespace order_stock_management_api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double?>("priorityScore")
+                        .HasColumnType("float");
+
                     b.Property<int>("totalSpend")
                         .HasColumnType("int");
+
+                    b.Property<double?>("waitingTime")
+                        .HasColumnType("float");
 
                     b.HasKey("customerId");
 
@@ -105,6 +111,11 @@ namespace order_stock_management_api.Migrations
                     b.Property<int>("customerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("isSuccess")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(-1);
+
                     b.Property<DateOnly>("orderDate")
                         .HasColumnType("date");
 
@@ -143,6 +154,11 @@ namespace order_stock_management_api.Migrations
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<double>("price")
                         .HasColumnType("float");
