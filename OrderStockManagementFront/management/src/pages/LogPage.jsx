@@ -13,20 +13,30 @@ const LogPage = () => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`, 
+          'Authorization': `Bearer ${token}`,
         }
       });
+
       const data = await response.json();
-      setLogs(data);
+      setLogs((prevLogs) => {
+        const newLogs = data.filter(
+          (log) => !prevLogs.some((prevLog) => prevLog.logId === log.logId)
+        );
+
+        const updatedLogs = [...newLogs, ...prevLogs];
+        updatedLogs.sort((a, b) => b.logId - a.logId);  
+        
+        return updatedLogs;
+      });
     } catch (error) {
       console.error("Error fetching logs:", error);
     }
   };
 
   useEffect(() => {
-    fetchLogs(); 
-    const interval = setInterval(fetchLogs, 1000); 
-    return () => clearInterval(interval); 
+    fetchLogs();
+    const interval = setInterval(fetchLogs, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleBack = () => {
@@ -41,23 +51,25 @@ const LogPage = () => {
         <table className="log-table">
           <thead>
             <tr>
-              <th>Log ID</th>
               <th>Log Date</th>
               <th>Log Type</th>
-              <th>Log Details</th>
-              <th>Customer ID</th>
-              <th>Order ID</th>
+              <th>Log Details</th> 
+              <th>Customer Name</th>
+              <th>Customer Type</th>
+              <th>Product Name</th>
+              <th>Quantity</th>             
             </tr>
           </thead>
           <tbody>
             {logs.map((log) => (
               <tr key={log.logId}>
-                <td>{log.logId}</td>
-                <td>{new Date(log.logDate).toLocaleString()}</td>
+                <td>{log.logDate} {log.logTime}</td>
                 <td>{log.logType}</td>
                 <td>{log.logDetails}</td>
-                <td>{log.customerId}</td>
-                <td>{log.orderId}</td>
+                <td>{log.customerName}</td>
+                <td>{log.customerType}</td>
+                <td>{log.productName}</td>
+                <td>{log.quantity}</td>                
               </tr>
             ))}
           </tbody>

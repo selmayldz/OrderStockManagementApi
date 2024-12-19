@@ -19,17 +19,13 @@ const ProductDetail = () => {
       }
 
       try {
-        console.log(productId)
-        const response = await fetch(
-          `http://localhost:5048/api/Products/${productId}`, 
-          {
-            method: 'GET',
-            headers: {
-              accept: '*/*',
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`http://localhost:5048/api/Products/${productId}`, {
+          method: 'GET',
+          headers: {
+            Accept: '*/*',
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         if (!response.ok) {
           throw new Error('Failed to fetch product details');
@@ -46,20 +42,35 @@ const ProductDetail = () => {
   }, [productId]);
 
   const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      alert('Please log in to add items to your cart');
+      navigate('/');
+      return;
+    }
+  
+    const userId = JSON.parse(atob(token.split('.')[1])).userId;
+  
+    // Kullanıcıya özel cart key'i belirliyoruz
+    const cartKey = `cart_${userId}`;
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+  
+    // Yeni ürün detaylarını hazırlıyoruz
     const newItem = {
       productId: product.productId,
       productName: product.productName,
-      productPhoto: product.productPhoto, 
+      productPhoto: product.productPhoto,
       price: product.price,
       quantity,
     };
   
+    // Sepeti güncelliyoruz
     cart.push(newItem);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem(cartKey, JSON.stringify(cart)); // Sepeti kullanıcıya özel kaydediyoruz
     alert('Product added to cart!');
-    navigate('/myorders'); 
+    navigate('/myorders'); // MyOrders sayfasına yönlendiriyoruz
   };
+  
   
 
   const handleQuantityChange = (event) => {
@@ -95,11 +106,7 @@ const ProductDetail = () => {
 
               <div className="product-quantity">
                 <label htmlFor="quantity">Quantity:</label>
-                <select
-                  id="quantity"
-                  value={quantity}
-                  onChange={handleQuantityChange}
-                >
+                <select id="quantity" value={quantity} onChange={handleQuantityChange}>
                   {[1, 2, 3, 4, 5].map((num) => (
                     <option key={num} value={num}>
                       {num}
@@ -109,10 +116,7 @@ const ProductDetail = () => {
               </div>
 
               <div className="product-action-buttons">
-                <button
-                  className="product-buy-button"
-                  onClick={handleAddToCart}
-                >
+                <button className="product-buy-button" onClick={handleAddToCart}>
                   Add to Cart
                 </button>
               </div>

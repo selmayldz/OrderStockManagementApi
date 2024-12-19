@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; 
+import { useParams, useNavigate } from 'react-router-dom'; 
 import '../styles/CustomerDetail.css';
 
 const CustomerDetail = () => {
   const { customerName } = useParams();
   const [customer, setCustomer] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('authToken');
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchCustomerDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5048/api/Admin/user/${customerName}`, {
+        const customerResponse = await fetch(`http://localhost:5048/api/Admin/user/${customerName}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -20,12 +22,27 @@ const CustomerDetail = () => {
           },
         });
 
-        if (!response.ok) {
+        if (!customerResponse.ok) {
           throw new Error('Failed to fetch customer details');
         }
 
-        const data = await response.json();
-        setCustomer(data);
+        const customerData = await customerResponse.json();
+        setCustomer(customerData);
+
+        const ordersResponse = await fetch(`http://localhost:5048/api/Admin/customers-order/${customerName}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (!ordersResponse.ok) {
+          throw new Error('Failed to fetch customer orders');
+        }
+
+        const ordersData = await ordersResponse.json();
+        setOrders(ordersData);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -48,23 +65,57 @@ const CustomerDetail = () => {
     return <div>Customer not found</div>;
   }
 
+  const handleBack = () => {
+    navigate('/customers');
+  };
+
   return (
-    <div className="customer-body">
-        <div className="customerdetail-page">
-            <h1>Customer Details</h1>
-            <div className="customerdetail">
-                <div className="customerdetail-photo">
-                <img src={customer.customerPhoto} alt={customer.customerName} />
-                </div>
-                <div className="customerdetail-info">
-                <h2>{customer.customerName}</h2>
-                <p><strong>Customer Type:</strong> {customer.customerType}</p>
-                <p><strong>Budget:</strong> ${customer.budget}</p>
-                <p><strong>Total Spend:</strong> ${customer.totalSpend}</p>
-                </div>
-            </div>
+    <div>
+      <a href="" className="profile-back-button" onClick={handleBack}>← Back</a>
+      <div className="customerdetail-page">
+        <h1>Customer Details</h1>
+        <div className="customerdetail">
+          <div className="customerdetail-photo">
+            <img src={customer.customerPhoto} alt={customer.customerName} />
+          </div>
+          <div className="customerdetail-info">
+            <h2>{customer.customerName}</h2>
+            <p><strong>Customer Type:</strong> {customer.customerType}</p>
+            <p><strong>Budget:</strong> ${customer.budget}</p>
+            <p><strong>Total Spend:</strong> ${customer.totalSpend}</p>
+          </div>
         </div>
-    </div>
+        <div className="customerdetail-orders">
+          <h2>Orders</h2>
+          {orders.length === 0 ? (
+            <p>No orders found for this customer.</p>
+          ) : (
+            <table className="customerdetail-orders-table">
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
+                  <th>Total Price</th>
+                  <th>Order Date Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order.orderId}>
+                    <td>{order.productName}</td>
+                    <td>{order.quantity}</td>
+                    <td>${order.totalPrice}</td>
+                    <td>{order.orderDate} {order.orderTime.split(':').slice(0, 2).join(':')}</td>
+                    <td>{order.orderStatus ? 'Completed' : 'Pending'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+    </div>  
   );
 };
 

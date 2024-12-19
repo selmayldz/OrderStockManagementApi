@@ -26,8 +26,16 @@ const CustomersAllOrders = () => {
         }
 
         const data = await response.json();
-        setOrders(data); 
+        setOrders((prevOrders) => {
+          const newOrders = data.filter(
+            (order) => !prevOrders.some((prevOrder) => prevOrder.orderId === order.orderId)
+          );
 
+          const updatedOrders = [...newOrders, ...prevOrders];
+          updatedOrders.sort((a, b) => b.orderId - a.orderId); 
+          
+          return updatedOrders;
+        });
       } catch (error) {
         setError(error.message);
       } finally {
@@ -36,6 +44,8 @@ const CustomersAllOrders = () => {
     };
 
     fetchOrders();
+    const interval = setInterval(fetchOrders, 1000); 
+    return () => clearInterval(interval);
   }, [token]); 
 
   const handleProcessOrders = async () => {
@@ -104,26 +114,22 @@ const CustomersAllOrders = () => {
         <table className="customersallorders-orders-table">
           <thead>
             <tr>
-              <th>Order ID</th>
-              <th>Customer ID</th>
-              <th>Product ID</th>
+              <th>Customer Name</th>
+              <th>Product Name</th>
               <th>Quantity</th>
               <th>Total Price</th>
-              <th>Order Date</th>
-              <th>Order Time</th>
+              <th>Order Date Time</th>
               <th>Order Status</th>
             </tr>
           </thead>
           <tbody>
             {orders.map(order => (
               <tr key={order.orderId}>
-                <td>{order.orderId}</td>
-                <td>{order.customerId}</td>
-                <td>{order.productId}</td>
+                <td>{order.customerName}</td>
+                <td>{order.productName}</td>
                 <td>{order.quantity}</td>
-                <td>{order.totalPrice}</td>
-                <td>{order.orderDate}</td>
-                <td>{order.orderTime}</td>
+                <td>${order.totalPrice}</td>
+                <td>{order.orderDate} {order.orderTime.split(':').slice(0, 2).join(':')}</td>
                 <td>{order.orderStatus ? 'Processed' : 'Pending'}</td>
               </tr>
             ))}

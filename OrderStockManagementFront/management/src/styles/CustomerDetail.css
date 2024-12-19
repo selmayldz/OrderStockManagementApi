@@ -2,12 +2,11 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    overflow: hidden;
     color: #000000;
     background: linear-gradient(135deg, #b282d6, #b282d6a9, #fefefe59);
     background-size: 300% 300%;
@@ -30,13 +29,11 @@ body {
     font-family: Arial, sans-serif;
     padding: 40px;
     max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 40px;
+    margin: 50px auto;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    overflow: hidden;
+    overflow: auto; 
 }
 
 .customerdetail h1 {
@@ -45,16 +42,27 @@ body {
     margin-bottom: 30px;
 }
 
+.customerdetail h2 {
+    font-size: 2.5rem;
+    color: #b282d6a9;
+    margin-bottom: 30px;
+}
+
 .customerdetail {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
+    justify-content: flex-start;
+    align-items: center; 
+    flex-direction: row;
+    gap: 30px; 
     margin-top: 20px;
+    width: 100%;
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .customerdetail-photo {
+    flex-shrink: 0; 
     width: 230px;
     height: 230px;
     border-radius: 115px; 
@@ -62,36 +70,46 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.customerdetail-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .customerdetail-info {
     text-align: left;
-    max-width: 600px; 
+    flex-grow: 1;
+    max-width: 500px;
     padding: 20px;
     border-radius: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.customerdetail-info h2 {
-    font-size: 2rem;
-    color: #4a4a4a;
-    margin-bottom: 15px;
+.customerdetail-orders {
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
-.customerdetail-info p {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 8px 0;
+.customerdetail-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
 }
 
-.customerdetail-info strong {
+.customerdetail-orders-table th,
+.customerdetail-orders-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap; 
+}
+
+.customerdetail-orders-table th {
+    background-color: #b282d6a9;
     font-weight: bold;
-    color: #333;
+    position: sticky;
+    top: 0; 
+    z-index: 1;
+}
+
+.customerdetail-orders-table td {
+    word-break: break-word; 
 }
 
 @media (max-width: 768px) {

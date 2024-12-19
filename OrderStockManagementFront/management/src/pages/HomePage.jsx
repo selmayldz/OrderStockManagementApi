@@ -15,9 +15,15 @@ const HomePage = () => {
   };
 
   const handleLogout = () => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      const userId = JSON.parse(atob(token.split('.')[1])).userId;
+      localStorage.removeItem(`cart_${userId}`);
+    }
     localStorage.removeItem('authToken');
     navigate('/');
   };
+  
 
   const handleProductClick = (productId) => {
     navigate(`/product-detail/${productId}`);
