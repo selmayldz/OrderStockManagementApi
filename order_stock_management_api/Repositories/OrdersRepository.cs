@@ -43,6 +43,7 @@ namespace order_stock_management_api.Repositories
             return await _context.Orders
                 .Where(o => !o.orderStatus)
                 .Include(o => o.Customer)
+                .Include(o => o.Product)
                 .ToListAsync();
         }
 
