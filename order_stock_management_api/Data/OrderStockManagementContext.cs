@@ -39,7 +39,11 @@ namespace order_stock_management_api.Data
                 .HasOne(o => o.Product)
                 .WithMany(p => p.Orders)
                 .HasForeignKey(o => o.productId)
-                .OnDelete(DeleteBehavior.NoAction);  
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Products>()
+                .Property(p => p.isDeleted)
+                .HasDefaultValue(false);
         }
     }
 }

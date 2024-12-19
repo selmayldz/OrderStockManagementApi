@@ -115,7 +115,7 @@ namespace order_stock_management_api.Services
 
             if (waitingTime > 60)
             {
-                var Log = new Logs
+                var timeoutLog = new Logs
                 {
                     logDate = DateTime.Now,
                     logType = "Hata",
@@ -124,61 +124,131 @@ namespace order_stock_management_api.Services
                     orderId = order.orderId
                 };
 
-                await _repository.AddLog(Log);
-                await _hubContext.Clients.All.SendAsync("ReceiveLog", Log);
+                await _repository.AddLog(timeoutLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", timeoutLog);
 
-                await _repository.UpdateOrderStatus(order.orderId, true);
+                await _repository.UpdateOrderStatus(order.orderId, true); 
+                return;
+            }
+
+            if (order.Product.isDeleted)
+            {
+                var deletedProductLog = new Logs
+                {
+                    logDate = DateTime.Now,
+                    logType = "Hata",
+                    logDetails = "Ürün silinmiş",
+                    customerId = order.customerId,
+                    orderId = order.orderId
+                };
+
+                await _repository.AddLog(deletedProductLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", deletedProductLog);
+
+                await _repository.UpdateOrderStatus(order.orderId, true); 
                 return;
             }
 
             bool isStockAvailable = await _repository.CheckStockAvailability(order.productId, order.quantity);
-            string logType;
-            string logDetails;
-
             if (!isStockAvailable)
             {
-                logType = "Hata";
-                logDetails = "Ürün stoğu yetersiz";
-            }
-            else
-            {
-                bool isStockDeducted = await _repository.DeductStock(order.productId, order.quantity);
-                if (isStockDeducted)
+                var insufficientStockLog = new Logs
                 {
-                    await _repository.UpdateOrderStatus(order.orderId, true);
-                    var newBudget = order.Customer.budget;
-                    newBudget -= (int)order.totalPrice;
-                    order.Customer.budget = newBudget;
-                    order.Customer.totalSpend += (int)order.totalPrice;
-                    if (order.Customer.customerType == "Standart" && order.Customer.totalSpend > 2000)
-                    {
-                        order.Customer.customerType = "Premium";
-                    }
-                    await _customerRepository.UpdateProfileAsync(order.Customer);
-                    logType = "Bilgilendirme";
-                    logDetails = "Satın alma başarılı";
-                }
-                else
-                {
-                    logType = "Hata";
-                    logDetails = "Veritabanı Hatası";
-                }
+                    logDate = DateTime.Now,
+                    logType = "Hata",
+                    logDetails = "Ürün stoğu yetersiz",
+                    customerId = order.customerId,
+                    orderId = order.orderId
+                };
+
+                await _repository.AddLog(insufficientStockLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", insufficientStockLog);
+
+                await _repository.UpdateOrderStatus(order.orderId, true); 
+                return;
             }
 
-            var log = new Logs
+            if (order.Customer.budget < order.totalPrice)
             {
-                logDate = DateTime.Now,
-                logType = logType,
-                logDetails = logDetails,
-                customerId = order.customerId,
-                orderId = order.orderId
-            };
+                var insufficientBudgetLog = new Logs
+                {
+                    logDate = DateTime.Now,
+                    logType = "Hata",
+                    logDetails = "Kullanıcının bütçesi yetersiz",
+                    customerId = order.customerId,
+                    orderId = order.orderId
+                };
 
-            await _repository.AddLog(log);
-            await _hubContext.Clients.All.SendAsync("ReceiveLog", log);
+                await _repository.AddLog(insufficientBudgetLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", insufficientBudgetLog);
 
-            await _repository.UpdateOrderStatus(order.orderId, true); 
+                await _repository.UpdateOrderStatus(order.orderId, true); 
+                return;
+            }
+
+            bool isStockDeducted = await _repository.DeductStock(order.productId, order.quantity);
+            if (!isStockDeducted)
+            {
+                var stockDeductionErrorLog = new Logs
+                {
+                    logDate = DateTime.Now,
+                    logType = "Hata",
+                    logDetails = "Stok düşme işlemi başarısız",
+                    customerId = order.customerId,
+                    orderId = order.orderId
+                };
+
+                await _repository.AddLog(stockDeductionErrorLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", stockDeductionErrorLog);
+
+                await _repository.UpdateOrderStatus(order.orderId, true); 
+                return;
+            }
+
+            try
+            {
+                order.Customer.budget -= (int)order.totalPrice;
+                order.Customer.totalSpend += (int)order.totalPrice;
+
+                if (order.Customer.customerType == "Standart" && order.Customer.totalSpend > 2000)
+                {
+                    order.Customer.customerType = "Premium";
+                }
+
+                await _customerRepository.UpdateProfileAsync(order.Customer);
+
+                var successLog = new Logs
+                {
+                    logDate = DateTime.Now,
+                    logType = "Bilgilendirme",
+                    logDetails = "Satın alma başarılı",
+                    customerId = order.customerId,
+                    orderId = order.orderId
+                };
+
+                await _repository.AddLog(successLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", successLog);
+
+                await _repository.UpdateOrderStatus(order.orderId, true); 
+            }
+            catch (Exception ex)
+            {
+                var databaseErrorLog = new Logs
+                {
+                    logDate = DateTime.Now,
+                    logType = "Hata",
+                    logDetails = "Veritabanı Hatası: " + ex.Message,
+                    customerId = order.customerId,
+                    orderId = order.orderId
+                };
+
+                await _repository.AddLog(databaseErrorLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", databaseErrorLog);
+
+                await _repository.UpdateOrderStatus(order.orderId, true); 
+            }
         }
+
 
 
         private double CalculatePriorityScore(Orders order, Customers customer)

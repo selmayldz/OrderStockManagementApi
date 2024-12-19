@@ -32,7 +32,7 @@ namespace order_stock_management_api.Repositories
             var product = await _context.Products.FindAsync(productId);
             if (product == null) return false;
 
-            _context.Products.Remove(product);
+            product.isDeleted = true;
             await _context.SaveChangesAsync();
             return true;
         }
@@ -44,7 +44,9 @@ namespace order_stock_management_api.Repositories
 
         public async Task<List<Products>> GetAllProductsAsync()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products
+                .Where(p => p.isDeleted == false)
+                .ToListAsync();
         }
 
         public async Task UpdateProductStockAsync(int productId, int newStock)

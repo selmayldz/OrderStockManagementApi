@@ -12,6 +12,7 @@ namespace order_stock_management_api.Models
         public double price { get; set; }
         public string description { get; set; }
         public string productPhoto { get; set; }
+        public bool isDeleted { get; set; }
 
         [JsonIgnore]
         public ICollection<Orders> Orders { get; set; }

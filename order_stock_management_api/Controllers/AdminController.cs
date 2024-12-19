@@ -114,5 +114,29 @@ namespace order_stock_management_api.Controllers
             }
         }
 
+        [HttpGet("customers-order/{customerName}")]
+        public async Task<ActionResult<IEnumerable<CreatedOrderDto>>> GetOrdersByCustomer(string customerName)
+        {
+            try
+            {
+                var customerType = User.Claims.FirstOrDefault(c => c.Type == "customerType")?.Value;
+
+                if (customerType == "admin")
+                {
+                    var result = await _orderService.GetOrdersByCustomerAsync(customerName);
+                    return Ok(result);
+                }
+                else
+                {
+                    throw new UnauthorizedAccessException("Only admins can see other customers' orders.");
+                }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, ex.Message);
+            }
+
+        }
+
     }
 }
