@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using order_stock_management_api.DataTransferObjects;
 using order_stock_management_api.Models;
+using order_stock_management_api.Repositories;
 using order_stock_management_api.Services;
 using System.Security.Claims;
 
@@ -14,11 +16,15 @@ namespace order_stock_management_api.Controllers
     {
         private readonly IOrdersService _service;
         private readonly ICustomerService _customerService;
+        private readonly IOrdersRepository _repository;
+        private readonly IHubContext<AdminHub> _hubContext;
 
-        public OrdersController(IOrdersService service, ICustomerService customerService)
+        public OrdersController(IOrdersService service, ICustomerService customerService, IOrdersRepository repository, IHubContext<AdminHub> hubContext)
         {
             _service = service;
             _customerService = customerService;
+            _repository = repository;
+            _hubContext = hubContext;
         }
 
         [HttpPost]
@@ -44,7 +50,19 @@ namespace order_stock_management_api.Controllers
 
                 if (customer.budget < totalPrice)
                 {
-                    return BadRequest("Not enough budget for this order.");
+                    var insufficientBudgetLog = new Logs
+                    {
+                        logDate = DateTime.Now,
+                        logType = "Uyarı",
+                        logDetails = "Kullanıcının bütçesi yetersiz",
+                        customerId = customer.customerId,
+                        orderId = null
+                    };
+
+                    await _repository.AddLog(insufficientBudgetLog);
+                    await _hubContext.Clients.All.SendAsync("ReceiveLog", insufficientBudgetLog);
+
+                    throw new InvalidOperationException("Not enough budget for this order.");
                 }
 
                 var order = new Orders

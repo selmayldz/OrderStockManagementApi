@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using order_stock_management_api.Data;
 
@@ -11,9 +12,11 @@ using order_stock_management_api.Data;
 namespace order_stock_management_api.Migrations
 {
     [DbContext(typeof(OrderStockManagementContext))]
-    partial class OrderStockManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20241219231929_product_things_changed")]
+    partial class product_things_changed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +63,7 @@ namespace order_stock_management_api.Migrations
 
                     b.HasKey("customerId");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("order_stock_management_api.Models.Logs", b =>
@@ -94,7 +97,7 @@ namespace order_stock_management_api.Migrations
 
                     b.HasIndex("orderId");
 
-                    b.ToTable("Logs", (string)null);
+                    b.ToTable("Logs");
                 });
 
             modelBuilder.Entity("order_stock_management_api.Models.Orders", b =>
@@ -137,7 +140,7 @@ namespace order_stock_management_api.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("order_stock_management_api.Models.Products", b =>
@@ -173,7 +176,7 @@ namespace order_stock_management_api.Migrations
 
                     b.HasKey("productId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("order_stock_management_api.Models.Logs", b =>

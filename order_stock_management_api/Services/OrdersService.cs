@@ -36,9 +36,22 @@ namespace order_stock_management_api.Services
             {
                 throw new ArgumentException("Product not found.");
             }
+            Console.WriteLine("customerid:" + order.customerId);
 
             if (product.stock < order.quantity)
             {
+                var insufficientStockLog = new Logs
+                {
+                    logDate = DateTime.Now,
+                    logType = "Uyarı",
+                    logDetails = "Ürün stoğu yetersiz",
+                    customerId = order.customerId,
+                    orderId = null
+                };
+
+                await _repository.AddLog(insufficientStockLog);
+                await _hubContext.Clients.All.SendAsync("ReceiveLog", insufficientStockLog);
+
                 throw new InvalidOperationException("Not enough stock for the requested quantity.");
             }
 
@@ -114,7 +127,7 @@ namespace order_stock_management_api.Services
             var orderDateTime = order.orderDate.ToDateTime(order.orderTime);
             var waitingTime = (DateTime.Now - orderDateTime).TotalSeconds;
 
-            if (waitingTime > 60)
+            if (waitingTime > 120)
             {
                 var timeoutLog = new Logs
                 {

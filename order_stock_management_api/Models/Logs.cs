@@ -9,9 +9,9 @@ namespace order_stock_management_api.Models
         public DateTime logDate { get; set; }
         public string logType { get; set; }
         public string logDetails { get; set; }
-        public int customerId { get; set; }
+        public int? customerId { get; set; }
         public Customers Customer { get; set; }
-        public int orderId { get; set; }
+        public int? orderId { get; set; }
         public Orders Order { get; set; }
     }
 }

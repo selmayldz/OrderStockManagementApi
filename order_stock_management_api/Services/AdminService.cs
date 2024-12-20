@@ -111,10 +111,10 @@ namespace order_stock_management_api.Services
                 logDate = l.logDate,
                 logType = l.logType,
                 logDetails = l.logDetails,
-                customerName = l.Customer.customerName,
-                customerType = l.Customer.customerType,
-                quantity = l.Order.quantity,
-                productName = l.Order.Product.productName
+                customerName = l.Customer?.customerName,
+                customerType = l.Customer?.customerType,
+                quantity = l.Order?.quantity ?? 0, 
+                productName = l.Order?.Product?.productName
             });
         }
     }

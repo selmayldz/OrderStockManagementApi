@@ -114,7 +114,6 @@ namespace order_stock_management_api.Controllers
                 return NotFound("Customer not found.");
             }
 
-            existingCustomer.customerName = updateDto.customerName ?? existingCustomer.customerName;
             existingCustomer.password = updateDto.password ?? existingCustomer.password;
             existingCustomer.customerPhoto = updateDto.customerPhoto ?? existingCustomer.customerPhoto;
 
