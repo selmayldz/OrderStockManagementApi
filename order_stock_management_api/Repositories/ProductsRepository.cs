@@ -5,6 +5,16 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace order_stock_management_api.Repositories
 {
+    public interface IProductsRepository
+    {
+        Task<Products> AddProductAsync(Products product);
+        Task<Products> UpdateProductAsync(Products product);
+        Task<bool> DeleteProductAsync(int productId);
+        Task<Products> GetProductByIdAsync(int productId);
+        Task<List<Products>> GetAllProductsAsync();
+        Task UpdateProductStockAsync(int productId, int newStock);
+    }
+
     public class ProductsRepository : IProductsRepository
     {
         private readonly OrderStockManagementContext _context;
@@ -43,14 +53,14 @@ namespace order_stock_management_api.Repositories
         public async Task<Products> UpdateProductAsync(Products product)
         {
             var activeOrders = await _context.Orders
-                .Where(o => o.productId == product.productId && !o.orderStatus) 
+                .Where(o => o.productId == product.productId && o.orderStatus == -1) 
                 .ToListAsync();
 
             if (activeOrders.Any())
             {
                 foreach (var order in activeOrders)
                 {
-                    order.orderStatus = true;
+                    order.orderStatus = 0;
 
                     var updateLog = new Logs
                     {
@@ -92,14 +102,14 @@ namespace order_stock_management_api.Repositories
             if (product == null) return false;
 
             var activeOrders = await _context.Orders
-                .Where(o => o.productId == productId && !o.orderStatus) 
+                .Where(o => o.productId == productId && o.orderStatus == -1) 
                 .ToListAsync();
 
             if (activeOrders.Any())
             {
                 foreach (var order in activeOrders)
                 {
-                    order.orderStatus = false;
+                    order.orderStatus = 0;
 
                     var deleteLog = new Logs
                     {
@@ -157,15 +167,5 @@ namespace order_stock_management_api.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-    }
-
-    public interface IProductsRepository
-    {
-        Task<Products> AddProductAsync(Products product);
-        Task<Products> UpdateProductAsync(Products product);
-        Task<bool> DeleteProductAsync(int productId);
-        Task<Products> GetProductByIdAsync(int productId);
-        Task<List<Products>> GetAllProductsAsync();
-        Task UpdateProductStockAsync(int productId, int newStock);
     }
 }

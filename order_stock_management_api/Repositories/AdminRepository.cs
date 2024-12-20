@@ -56,7 +56,7 @@ namespace order_stock_management_api.Repositories
             return await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Product)
-                .Where(o => o.orderStatus == false)
+                .Where(o => o.orderStatus == -1)
                 .ToListAsync();
         }
 
@@ -65,7 +65,7 @@ namespace order_stock_management_api.Repositories
             return await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Product)
-                .Where(o => o.orderStatus == true)
+                .Where(o => o.orderStatus == 1)
                 .ToListAsync();
         }
 

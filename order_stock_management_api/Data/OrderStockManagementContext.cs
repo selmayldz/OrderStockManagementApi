@@ -42,7 +42,7 @@ namespace order_stock_management_api.Data
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Orders>()
-                .Property(p => p.isSuccess)
+                .Property(p => p.orderStatus)
                 .HasDefaultValue(-1);
 
             modelBuilder.Entity<Products>()

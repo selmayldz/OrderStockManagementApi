@@ -7,9 +7,9 @@ namespace order_stock_management_api.Repositories
     public interface IOrdersRepository
     {
         Task<Orders> CreateOrderAsync(Orders order);
-        Task<List<Orders>> GetOrdersByCustomerIdAsync(string customerName);
+        Task<List<Orders>> GetOrdersByCustomerAsync(string customerName);
         Task<List<Orders>> GetAllPendingOrders();
-        Task UpdateOrderStatus(int orderId, bool status, int isSuccess);
+        Task UpdateOrderStatus(int orderId, int status);
         Task<Customers> GetCustomerById(int customerId);
         Task AddLog(Logs log);
         Task<bool> CheckStockAvailability(int productId, int quantity);
@@ -30,7 +30,7 @@ namespace order_stock_management_api.Repositories
 
             return order;
         }
-        public async Task<List<Orders>> GetOrdersByCustomerIdAsync(string customerName)
+        public async Task<List<Orders>> GetOrdersByCustomerAsync(string customerName)
         {
             return await _context.Orders
                 .Include(o => o.Customer)
@@ -41,19 +41,18 @@ namespace order_stock_management_api.Repositories
         public async Task<List<Orders>> GetAllPendingOrders()
         {
             return await _context.Orders
-                .Where(o => !o.orderStatus)
+                .Where(o => o.orderStatus == -1)
                 .Include(o => o.Customer)
                 .Include(o => o.Product)
                 .ToListAsync();
         }
 
-        public async Task UpdateOrderStatus(int orderId, bool status, int isSuccess)
+        public async Task UpdateOrderStatus(int orderId, int status)
         {
             var order = await _context.Orders.FindAsync(orderId);
             if (order != null)
             {
                 order.orderStatus = status;
-                order.isSuccess = isSuccess;
                 await _context.SaveChangesAsync();
             }
         }

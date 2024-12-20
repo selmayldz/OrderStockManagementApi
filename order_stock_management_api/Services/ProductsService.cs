@@ -4,6 +4,15 @@ using System.Security.Claims;
 
 namespace order_stock_management_api.Services
 {
+    public interface IProductsService
+    {
+        Task<Products> AddProductAsync(Products product, ClaimsPrincipal user);
+        Task<Products> UpdateProductAsync(Products product, ClaimsPrincipal user);
+        Task<bool> DeleteProductAsync(int productId, ClaimsPrincipal user);
+        Task<Products> GetProductByIdAsync(int productId);
+        Task<List<Products>> GetAllProductsAsync();
+    }
+
     public class ProductsService : IProductsService
     {
         private readonly IProductsRepository _repository;
@@ -44,14 +53,5 @@ namespace order_stock_management_api.Services
         {
             return await _repository.GetAllProductsAsync();
         }
-    }
-
-    public interface IProductsService
-    {
-        Task<Products> AddProductAsync(Products product, ClaimsPrincipal user);
-        Task<Products> UpdateProductAsync(Products product, ClaimsPrincipal user);
-        Task<bool> DeleteProductAsync(int productId, ClaimsPrincipal user);
-        Task<Products> GetProductByIdAsync(int productId);
-        Task<List<Products>> GetAllProductsAsync();
     }
 }

@@ -65,11 +65,11 @@ namespace order_stock_management_api.Controllers
             try
             {
                 await _orderService.ProcessOrders();
-                return Ok("Siparişler işlendi.");
+                return Ok("Orders processed.");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
@@ -83,7 +83,7 @@ namespace order_stock_management_api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
         [HttpGet("true-status-orders")]
@@ -96,7 +96,7 @@ namespace order_stock_management_api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
@@ -110,7 +110,7 @@ namespace order_stock_management_api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 

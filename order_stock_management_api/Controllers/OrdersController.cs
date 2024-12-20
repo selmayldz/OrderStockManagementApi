@@ -72,7 +72,7 @@ namespace order_stock_management_api.Controllers
                     customerId = customer.customerId,
                     orderDate = DateOnly.FromDateTime(DateTime.Now),
                     orderTime = TimeOnly.FromDateTime(DateTime.Now),
-                    orderStatus = false, 
+                    orderStatus = 0, 
                     totalPrice = totalPrice
                 };
 
@@ -87,8 +87,7 @@ namespace order_stock_management_api.Controllers
                     orderDate = createdOrder.orderDate,
                     orderTime = createdOrder.orderTime,
                     orderStatus = createdOrder.orderStatus,
-                    customerName = createdOrder.Customer.customerName,
-                    isSuccess = createdOrder.isSuccess
+                    customerName = createdOrder.Customer.customerName
                 };
                 return Ok(createdOrderDto);
             }

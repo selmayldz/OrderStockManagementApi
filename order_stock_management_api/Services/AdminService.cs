@@ -55,8 +55,7 @@ namespace order_stock_management_api.Services
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
                 productName = o.Product.productName,
-                customerName = o.Customer.customerName,
-                isSuccess = o.isSuccess
+                customerName = o.Customer.customerName
             });
         }
         public async Task<IEnumerable<CreatedOrderDto>> GetOrdersByFalseStatus(ClaimsPrincipal user)
@@ -74,8 +73,7 @@ namespace order_stock_management_api.Services
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
                 customerName = o.Customer.customerName,
-                productName = o.Product.productName,
-                isSuccess = o.isSuccess
+                productName = o.Product.productName
             });
         }
 
@@ -94,8 +92,7 @@ namespace order_stock_management_api.Services
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
                 customerName = o.Customer.customerName,
-                productName = o.Product.productName,
-                isSuccess = o.isSuccess
+                productName = o.Product.productName
             });
         }
 
