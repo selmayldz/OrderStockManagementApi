@@ -15,7 +15,25 @@ h1 {
     font-size: 28px;
     text-transform: uppercase;
 }
-
+.progress-container {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    margin-top: 10px;
+}
+  
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #81c784);
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    transition: width 0.5s ease;
+}
+  
+  
 .orders-table, 
 .customer-orders-table {
     width: 90%;
@@ -25,9 +43,10 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-top: 80px; 
+    margin-bottom: 40px;
     overflow-x: auto; 
     overflow-y: auto; 
-    max-height: 30vh;
+    max-height: 150vh;
     transition: transform 0.3s ease;
 }
 
@@ -97,29 +116,4 @@ tbody tr:nth-child(even) {
     margin: 20px 0;
 }
 
-@media (max-width: 768px) {
-    th, td {
-        padding: 8px;
-        font-size: 12px;
-    }
 
-    h1 {
-        font-size: 22px;
-    }
-
-    .place-all-orders-button {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-
-    .orders-table,
-    .customer-orders-table {
-        padding: 15px;
-        margin-top: 20px;
-    }
-
-    .product-photo {
-        width: 40px;
-        height: 40px;
-    }
-}

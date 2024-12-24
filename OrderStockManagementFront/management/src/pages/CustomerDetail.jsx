@@ -65,10 +65,10 @@ const CustomerDetail = () => {
     return <div>Customer not found</div>;
   }
 
-  const getOrderStatus = (isSuccess) => {
-    if (isSuccess === 0) return 'Unsuccessful';
-    if (isSuccess === -1) return 'Pending';
-    if (isSuccess === 1) return 'Successful';
+  const getOrderStatus = (orderStatus) => {
+    if (orderStatus === 0) return 'Unsuccessful';
+    if (orderStatus === -1) return 'Pending';
+    if (orderStatus === 1) return 'Successful';
     return 'Unknown';  
   };
 
@@ -82,15 +82,11 @@ const CustomerDetail = () => {
       <div className="customerdetail-page">
         <h1>Customer Details</h1>
         <div className="customerdetail">
-          <div className="customerdetail-photo">
-            <img src={customer.customerPhoto} alt={customer.customerName} />
-          </div>
-          <div className="customerdetail-info">
+          <img src={customer.customerPhoto} alt={customer.customerName} />
             <h2>{customer.customerName}</h2>
             <p><strong>Customer Type:</strong> {customer.customerType}</p>
             <p><strong>Budget:</strong> ${customer.budget}</p>
-            <p><strong>Total Spend:</strong> ${customer.totalSpend}</p>
-          </div>
+            <p><strong>Total Spend:</strong> ${customer.totalSpend}</p> 
         </div>
         <div className="customerdetail-orders">
           <h2>Orders</h2>
@@ -114,7 +110,9 @@ const CustomerDetail = () => {
                     <td>{order.quantity}</td>
                     <td>${order.totalPrice}</td>
                     <td>{order.orderDate} {order.orderTime.split(':').slice(0, 2).join(':')}</td>
-                    <td>{getOrderStatus(order.isSuccess)}</td>
+                    <td>
+                      {getOrderStatus(order.orderStatus, order.progress || 0)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const OrdersPage = () => {
   const [cart, setCart] = useState([]);
   const [customerOrders, setCustomerOrders] = useState([]);
+  const [loadingOrders, setLoadingOrders] = useState(true);
   const token = localStorage.getItem('authToken');
   const navigate = useNavigate();
 
@@ -13,14 +14,13 @@ const OrdersPage = () => {
       navigate('/');
       return;
     }
-  
+
     const userId = JSON.parse(atob(token.split('.')[1])).userId;
     const cartKey = `cart_${userId}`;
-  
+
     const storedCart = JSON.parse(localStorage.getItem(cartKey)) || [];
     setCart(storedCart);
   }, [token, navigate]);
-  
 
   useEffect(() => {
     const fetchCustomerOrders = async () => {
@@ -45,6 +45,8 @@ const OrdersPage = () => {
         });
       } catch (error) {
         console.error('Error fetching customer orders:', error);
+      } finally {
+        setLoadingOrders(false);
       }
     };
 
@@ -56,8 +58,8 @@ const OrdersPage = () => {
   const handlePlaceAllOrders = async () => {
     try {
       for (const product of cart) {
-        console.log('Placing order:', product); 
-  
+        console.log('Placing order:', product);
+
         const response = await fetch('http://localhost:5048/api/Orders', {
           method: 'POST',
           headers: {
@@ -69,10 +71,10 @@ const OrdersPage = () => {
             quantity: product.quantity,
           }),
         });
-  
+
         if (!response.ok) {
           const errorMessage = await response.text();
-          
+
           if (errorMessage.includes('Not enough stock')) {
             alert(`Ürün: ${product.productName} için yeterli stok yok. Bu işlem gerçekleştirilemez.`);
           } else {
@@ -80,14 +82,14 @@ const OrdersPage = () => {
           }
           continue;
         }
-  
+
         const order = await response.json();
         console.log('Order placed successfully:', order);
       }
-  
+
       alert('All orders placed successfully!');
       setCart([]);
-  
+
       const userId = JSON.parse(atob(token.split('.')[1])).userId;
       const cartKey = `cart_${userId}`;
       localStorage.removeItem(cartKey);
@@ -96,14 +98,40 @@ const OrdersPage = () => {
       alert('Failed to place the orders: ' + error.message);
     }
   };
-  
-  const getOrderStatus = (isSuccess) => {
-    if (isSuccess === 0) return 'Unsuccessful';
-    if (isSuccess === -1) return 'Pending';
-    if (isSuccess === 1) return 'Successful';
-    return 'Unknown';  
-  };
 
+  const getOrderStatus = (orderStatus, progress) => {
+    if (orderStatus === -1) return <ProgressBar progress={progress} orderStatus={-1} />;
+    if (orderStatus === 0) return 'Unsuccessful';
+    if (orderStatus === 1) return <ProgressBar progress={100} orderStatus={1} />;
+    return 'Unknown';
+  };
+  
+  const ProgressBar = ({ progress, orderStatus }) => {
+    const [currentProgress, setCurrentProgress] = useState(progress);
+  
+    useEffect(() => {
+      let interval;
+  
+      if (orderStatus === 1) {
+        setCurrentProgress(100);
+      } else if (currentProgress < 80) {
+        interval = setInterval(() => {
+          setCurrentProgress((prev) => Math.min(prev + Math.random() * 10, 80));
+        }, 500);
+      }
+  
+      return () => clearInterval(interval);
+    }, [currentProgress, orderStatus]);
+  
+    return (
+      <div className="progress-container">
+        <div className="progress-bar" style={{ width: `${currentProgress}%` }}>
+          {currentProgress === 100 ? 'Successful' : `${currentProgress.toFixed(0)}%`}
+        </div>
+      </div>
+    );
+  };
+  
   const handleBack = () => {
     navigate('/home');
   };
@@ -152,7 +180,9 @@ const OrdersPage = () => {
       </div>
       <div className="customer-orders-table">
         <h1>Customer Orders</h1>
-        {customerOrders.length === 0 ? (
+        {loadingOrders ? (
+          <div className="loading-spinner">Loading...</div>
+        ) : customerOrders.length === 0 ? (
           <p>No customer orders found</p>
         ) : (
           <table>
@@ -172,7 +202,9 @@ const OrdersPage = () => {
                   <td>{order.quantity}</td>
                   <td>${order.totalPrice}</td>
                   <td>{order.orderDate} {order.orderTime.split(':').slice(0, 2).join(':')}</td>
-                  <td>{getOrderStatus(order.isSuccess)}</td>
+                  <td>
+                    {getOrderStatus(order.orderStatus, order.progress || 0)}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -182,5 +214,6 @@ const OrdersPage = () => {
     </div>
   );
 };
+
 
 export default OrdersPage;

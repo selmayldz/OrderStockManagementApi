@@ -87,6 +87,7 @@ const CustomersAllOrders = () => {
   
       console.log('Orders processed successfully:', data);
       alert('Orders processed successfully!');
+      window.location.reload(); 
     } catch (error) {
       console.error('Error processing orders:', error);
       alert('Error processing orders: ' + error.message);
@@ -104,6 +105,13 @@ const CustomersAllOrders = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const getOrderStatus = (orderStatus) => {
+    if (orderStatus === 0) return 'Processed';
+    if (orderStatus === -1) return 'Pending';
+    if (orderStatus === 1) return 'Processed';
+    return 'Unknown';  
+  };
 
   return (
     <div>
@@ -130,7 +138,9 @@ const CustomersAllOrders = () => {
                 <td>{order.quantity}</td>
                 <td>${order.totalPrice}</td>
                 <td>{order.orderDate} {order.orderTime.split(':').slice(0, 2).join(':')}</td>
-                <td>{order.orderStatus ? 'Processed' : 'Pending'}</td>
+                <td>
+                    {getOrderStatus(order.orderStatus, order.progress || 0)}
+                </td>
               </tr>
             ))}
           </tbody>
