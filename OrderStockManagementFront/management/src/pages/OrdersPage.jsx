@@ -41,7 +41,11 @@ const OrdersPage = () => {
           const newOrders = data.filter(
             (order) => !prevOrders.some((prevOrder) => prevOrder.orderId === order.orderId)
           );
-          return [...newOrders, ...prevOrders];
+
+          const updatedOrders = [...newOrders, ...prevOrders];
+          updatedOrders.sort((a, b) => b.orderId - a.orderId); 
+          
+          return updatedOrders;
         });
       } catch (error) {
         console.error('Error fetching customer orders:', error);
@@ -214,6 +218,5 @@ const OrdersPage = () => {
     </div>
   );
 };
-
 
 export default OrdersPage;
