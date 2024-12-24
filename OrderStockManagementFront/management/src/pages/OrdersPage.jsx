@@ -80,9 +80,9 @@ const OrdersPage = () => {
           const errorMessage = await response.text();
 
           if (errorMessage.includes('Not enough stock')) {
-            alert(`Ürün: ${product.productName} için yeterli stok yok. Bu işlem gerçekleştirilemez.`);
+            alert(`There is not enough stock for product: ${product.productName}. This operation cannot be performed.`);
           } else {
-            alert(`Bir hata oluştu: ${errorMessage}`);
+            alert(`An error occurred: ${errorMessage}`);
           }
           continue;
         }

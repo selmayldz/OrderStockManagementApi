@@ -124,29 +124,28 @@
 
 @media (max-width: 1200px) {
     .admin-page {
-        min-width: 80vw; /* Sayfa genişliğini küçült */
-        padding: 30px; /* Paddingi küçült */
+        min-width: 80vw; 
+        padding: 30px; 
     }
 
     .admin-navigation {
-        width: 70%; /* Navigasyon genişliğini azalt */
+        width: 70%; 
     }
 
     .admin-nav-button {
-        font-size: 16px; /* Font boyutunu küçült */
-        padding: 16px 22px; /* Buton içi boşluğu küçült */
+        font-size: 16px; 
+        padding: 16px 22px; 
     }
 
     .admin-logout-button {
-        font-size: 16px; /* Font boyutunu küçült */
-        padding: 14px 18px; /* Buton içi boşluğu küçült */
+        font-size: 16px; 
+        padding: 14px 18px; 
     }
 }
 
-/* 1000px altındaki ekranlar için */
 @media (max-width: 1000px) {
     .admin-page {
-        min-width: 85vw; /* Sayfa genişliğini biraz daha küçült */
+        min-width: 85vw; 
         padding: 25px;
     }
 
@@ -155,7 +154,7 @@
     }
 
     .admin-nav-button {
-        font-size: 15px; /* Font boyutunu küçült */
+        font-size: 15px; 
         padding: 15px 20px;
     }
 
@@ -165,10 +164,9 @@
     }
 }
 
-/* 800px altındaki ekranlar için */
 @media (max-width: 800px) {
     .admin-page {
-        min-width: 90vw; /* Sayfa genişliği tam 90vw */
+        min-width: 90vw; 
         padding: 20px;
     }
 
@@ -177,7 +175,7 @@
     }
 
     .admin-nav-button {
-        font-size: 14px; /* Font boyutunu küçült */
+        font-size: 14px; 
         padding: 14px 18px;
     }
 
@@ -189,7 +187,7 @@
 
 @media (max-width: 600px) {
     .admin-page {
-        min-width: 95vw; /* Sayfa genişliğini 95vw yap */
+        min-width: 95vw; 
         padding: 15px;
     }
 
@@ -198,7 +196,7 @@
     }
 
     .admin-nav-button {
-        font-size: 13px; /* Font boyutunu küçült */
+        font-size: 13px; 
         padding: 12px 16px;
     }
 
@@ -208,10 +206,9 @@
     }
 }
 
-/* 400px altındaki ekranlar için */
 @media (max-width: 400px) {
     .admin-page {
-        min-width: 100vw; /* Sayfa genişliğini 100vw yap */
+        min-width: 100vw; 
         padding: 10px;
     }
 
@@ -220,7 +217,7 @@
     }
 
     .admin-nav-button {
-        font-size: 12px; /* Font boyutunu küçült */
+        font-size: 12px; 
         padding: 10px 14px;
     }
 
@@ -232,17 +229,17 @@
 
 @media (max-width: 300px) {
     .admin-page {
-        min-width: 25vw; /* Sayfa genişliğini 4'te 1 yap */
-        padding: 5px; /* Paddingi çok daha küçült */
+        min-width: 25vw; 
+        padding: 5px; 
     }
 
     .admin-navigation {
-        width: 100%; /* Navigasyon genişliğini %100 yap */
+        width: 100%; 
     }
 
     .admin-nav-button {
-        font-size: 10px; /* Font boyutunu çok küçült */
-        padding: 8px 10px; /* Buton içi boşluğu küçült */
+        font-size: 10px; 
+        padding: 8px 10px; 
     }
 
     .admin-logout-button {
