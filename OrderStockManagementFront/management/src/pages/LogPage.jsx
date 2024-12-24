@@ -28,6 +28,7 @@ const LogPage = () => {
         
         return updatedLogs;
       });
+      // window.location.reload(); bununla sürekli istek atılıp sayfanın güncellendiğini görebiliriz :)
     } catch (error) {
       console.error("Error fetching logs:", error);
     }

@@ -51,11 +51,9 @@ const ProductDetail = () => {
   
     const userId = JSON.parse(atob(token.split('.')[1])).userId;
   
-    // Kullanıcıya özel cart key'i belirliyoruz
     const cartKey = `cart_${userId}`;
     const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
   
-    // Yeni ürün detaylarını hazırlıyoruz
     const newItem = {
       productId: product.productId,
       productName: product.productName,
@@ -64,11 +62,10 @@ const ProductDetail = () => {
       quantity,
     };
   
-    // Sepeti güncelliyoruz
     cart.push(newItem);
-    localStorage.setItem(cartKey, JSON.stringify(cart)); // Sepeti kullanıcıya özel kaydediyoruz
+    localStorage.setItem(cartKey, JSON.stringify(cart)); 
     alert('Product added to cart!');
-    navigate('/myorders'); // MyOrders sayfasına yönlendiriyoruz
+    navigate('/myorders'); 
   };
   
   
