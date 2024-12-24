@@ -273,9 +273,9 @@ namespace order_stock_management_api.Services
 
             var priorityScore = customerTypeScore + (waitingTime * 0.5);
 
-            customer.priorityScore = priorityScore;
+            order.priorityScore = priorityScore;
 
-            customer.waitingTime = waitingTime;
+            order.waitingTime = waitingTime;
 
             return priorityScore;
         }

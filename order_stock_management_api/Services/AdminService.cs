@@ -8,7 +8,7 @@ namespace order_stock_management_api.Services
 {
     public interface IAdminService
     {
-        Task<List<ProfileForAdminDto>> GetAllUsers(ClaimsPrincipal user);
+        Task<List<ProfileDto>> GetAllUsers(ClaimsPrincipal user);
         Task<Customers> GetCustomerDetailsAsync(string customerName);
         Task<IEnumerable<CreatedOrderDto>> GetAllOrdersAsync(ClaimsPrincipal user);
         Task<IEnumerable<CreatedOrderDto>> GetOrdersByFalseStatus(ClaimsPrincipal user);
@@ -25,9 +25,8 @@ namespace order_stock_management_api.Services
             _adminRepository = adminRepository;
         }
 
-        public async Task<List<ProfileForAdminDto>> GetAllUsers(ClaimsPrincipal user)
+        public async Task<List<ProfileDto>> GetAllUsers(ClaimsPrincipal user)
         {
-            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see users.");
             return await _adminRepository.GetAllUsers();
         }
 
@@ -35,15 +34,8 @@ namespace order_stock_management_api.Services
         {
             return await _adminRepository.GetCustomerDetailsAsync(customerName);
         }
-        private bool IsAdmin(ClaimsPrincipal user)
-        {
-            var customerType = user.Claims.FirstOrDefault(c => c.Type == "customerType")?.Value;
-            return customerType == "admin";
-        }
         public async Task<IEnumerable<CreatedOrderDto>> GetAllOrdersAsync(ClaimsPrincipal user)
         {
-            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see all orders.");
-
             var orders = await _adminRepository.GetAllOrdersAsync();
 
             return orders.Select(o => new CreatedOrderDto
@@ -55,13 +47,13 @@ namespace order_stock_management_api.Services
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
                 productName = o.Product.productName,
-                customerName = o.Customer.customerName
+                customerName = o.Customer.customerName,
+                waitingTime = o.waitingTime,
+                priorityScore = o.priorityScore
             });
         }
         public async Task<IEnumerable<CreatedOrderDto>> GetOrdersByFalseStatus(ClaimsPrincipal user)
         {
-            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see orders with false status.");
-
             var orders = await _adminRepository.GetOrdersByFalseStatus();
 
             return orders.Select(o => new CreatedOrderDto
@@ -73,14 +65,14 @@ namespace order_stock_management_api.Services
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
                 customerName = o.Customer.customerName,
-                productName = o.Product.productName
+                productName = o.Product.productName,
+                waitingTime = o.waitingTime,
+                priorityScore = o.priorityScore
             });
         }
 
         public async Task<IEnumerable<CreatedOrderDto>> GetOrdersByTrueStatus(ClaimsPrincipal user)
         {
-            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see orders with false status.");
-
             var orders = await _adminRepository.GetOrdersByTrueStatus();
 
             return orders.Select(o => new CreatedOrderDto
@@ -92,14 +84,14 @@ namespace order_stock_management_api.Services
                 orderTime = o.orderTime,
                 orderStatus = o.orderStatus,
                 customerName = o.Customer.customerName,
-                productName = o.Product.productName
+                productName = o.Product.productName,
+                waitingTime = o.waitingTime,
+                priorityScore = o.priorityScore
             });
         }
 
         public async Task<IEnumerable<LogDto>> GetLogsAsync(ClaimsPrincipal user)
         {
-            if (!IsAdmin(user)) throw new UnauthorizedAccessException("Only admins can see logs.");
-
             var logs = await _adminRepository.GetLogsAsync();
 
             return logs.Select(l => new LogDto

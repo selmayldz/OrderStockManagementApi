@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using order_stock_management_api.DataTransferObjects;
+using order_stock_management_api.Helpers;
 using order_stock_management_api.Models;
 using order_stock_management_api.Services;
 
@@ -12,15 +13,24 @@ namespace order_stock_management_api.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductsService _service;
+        private readonly IsAdminHelper _isAdminHelper;
 
-        public ProductsController(IProductsService service)
+        public ProductsController(IProductsService service, IsAdminHelper isAdminHelper)
         {
             _service = service;
+            _isAdminHelper = isAdminHelper;
         }
 
-        [HttpPost]
+        [HttpPost]   
         public async Task<IActionResult> AddProduct([FromBody] ProductDto productDto)
         {
+            var isAdmin = _isAdminHelper.IsAdmin(User);
+
+            if (!isAdmin)
+            {
+                return Unauthorized("Only admin can add product.");
+            }
+
             var product = new Products
             {
                 productName = productDto.productName,
@@ -72,6 +82,13 @@ namespace order_stock_management_api.Controllers
         [HttpPut("{productId}")]
         public async Task<IActionResult> UpdateProduct(int productId, [FromBody] ProductDto productUpdateDto)
         {
+            var isAdmin = _isAdminHelper.IsAdmin(User);
+
+            if (!isAdmin)
+            {
+                return Unauthorized("Only admin can update product.");
+            }
+
             try
             {
                 var existingProduct = await _service.GetProductByIdAsync(productId);
@@ -108,6 +125,13 @@ namespace order_stock_management_api.Controllers
         [HttpDelete("{productId}")]
         public async Task<IActionResult> DeleteProduct(int productId)
         {
+            var isAdmin = _isAdminHelper.IsAdmin(User);
+
+            if (!isAdmin)
+            {
+                return Unauthorized("Only admin can delete product.");
+            }
+
             try
             {
                 var isDeleted = await _service.DeleteProductAsync(productId, User);

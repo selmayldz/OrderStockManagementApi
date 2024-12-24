@@ -7,7 +7,7 @@ namespace order_stock_management_api.Repositories
 {
     public interface IAdminRepository
     {
-        Task<List<ProfileForAdminDto>> GetAllUsers();
+        Task<List<ProfileDto>> GetAllUsers();
         Task<Customers> GetCustomerDetailsAsync(string customerName);
         Task<List<Orders>> GetAllOrdersAsync();
         Task<List<Orders>> GetOrdersByFalseStatus();
@@ -24,17 +24,15 @@ namespace order_stock_management_api.Repositories
             _context = context;
         }
 
-        public async Task<List<ProfileForAdminDto>> GetAllUsers()
+        public async Task<List<ProfileDto>> GetAllUsers()
         {
-            return await _context.Set<Customers>().Select(customer => new ProfileForAdminDto
+            return await _context.Set<Customers>().Select(customer => new ProfileDto
             {
                 customerName = customer.customerName,
                 budget = customer.budget,
                 customerType = customer.customerType,
                 totalSpend = customer.totalSpend,
-                customerPhoto = customer.customerPhoto,
-                priorityScore = customer.priorityScore,
-                waitingTime = customer.waitingTime
+                customerPhoto = customer.customerPhoto
             }).ToListAsync();
         }
 
@@ -56,7 +54,7 @@ namespace order_stock_management_api.Repositories
             return await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Product)
-                .Where(o => o.orderStatus == -1)
+                .Where(o => o.orderStatus == 0)
                 .ToListAsync();
         }
 

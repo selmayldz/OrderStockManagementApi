@@ -16,6 +16,8 @@ namespace order_stock_management_api.Models
         public Customers Customer { get; set; }
         public int productId { get; set; }
         public Products Product { get; set; }
+        public double? waitingTime { get; set; }
+        public double? priorityScore { get; set; }
 
         [JsonIgnore]
         public ICollection<Logs> Logs { get; set; }

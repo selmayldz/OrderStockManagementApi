@@ -10,5 +10,7 @@
         public int orderStatus { get; set; }
         public string customerName { get; set; }
         public string productName { get; set; }
+        public double? waitingTime { get; set; }
+        public double? priorityScore { get; set; }
     }
 }
