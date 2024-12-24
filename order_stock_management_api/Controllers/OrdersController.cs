@@ -53,8 +53,8 @@ namespace order_stock_management_api.Controllers
                     var insufficientBudgetLog = new Logs
                     {
                         logDate = DateTime.Now,
-                        logType = "Uyarı",
-                        logDetails = "Kullanıcının bütçesi yetersiz",
+                        logType = "Warning",
+                        logDetails = "User's budget is insufficient",
                         customerId = customer.customerId,
                         orderId = null
                     };

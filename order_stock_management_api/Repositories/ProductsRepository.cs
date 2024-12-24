@@ -35,8 +35,8 @@ namespace order_stock_management_api.Repositories
             var log = new Logs
             {
                 logDate = DateTime.Now,
-                logType = "Bilgilendirme",
-                logDetails = $"Yeni ürün eklendi: {product.productName}",
+                logType = "Informing",
+                logDetails = $"New product added: {product.productName}",
                 customerId = null,
                 orderId = null
             };
@@ -65,8 +65,8 @@ namespace order_stock_management_api.Repositories
                     var updateLog = new Logs
                     {
                         logDate = DateTime.Now,
-                        logType = "Hata",
-                        logDetails = "Ürün güncellendiği için sipariş iptal edildi",
+                        logType = "Error",
+                        logDetails = "Order cancelled because product was updated.",
                         customerId = order.customerId,
                         orderId = order.orderId
                     };
@@ -84,8 +84,8 @@ namespace order_stock_management_api.Repositories
             var log = new Logs
             {
                 logDate = DateTime.Now,
-                logType = "Bilgilendirme",
-                logDetails = $"Ürün güncellendi: {product.productName}",
+                logType = "Informing",
+                logDetails = $"Product updated: {product.productName}",
                 customerId = null,
                 orderId = null
             };
@@ -114,8 +114,8 @@ namespace order_stock_management_api.Repositories
                     var deleteLog = new Logs
                     {
                         logDate = DateTime.Now,
-                        logType = "Hata",
-                        logDetails = "Ürün silindiği için sipariş iptal edildi",
+                        logType = "Error",
+                        logDetails = "Order cancelled because product was deleted",
                         customerId = order.customerId,
                         orderId = order.orderId
                     };
@@ -133,8 +133,8 @@ namespace order_stock_management_api.Repositories
             var log = new Logs
             {
                 logDate = DateTime.Now,
-                logType = "Bilgilendirme",
-                logDetails = $"Ürün silindi: {product.productName}",
+                logType = "Informing",
+                logDetails = $"Product deleted: {product.productName}",
                 customerId = null,
                 orderId = null
             };

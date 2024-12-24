@@ -43,8 +43,8 @@ namespace order_stock_management_api.Services
                 var insufficientStockLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Uyarı",
-                    logDetails = "Ürün stoğu yetersiz",
+                    logType = "Warning",
+                    logDetails = "Product stock is insufficient.",
                     customerId = order.customerId,
                     orderId = null
                 };
@@ -131,8 +131,8 @@ namespace order_stock_management_api.Services
                 var timeoutLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Hata",
-                    logDetails = "Zaman aşımı",
+                    logType = "Error",
+                    logDetails = "Timeout",
                     customerId = order.customerId,
                     orderId = order.orderId
                 };
@@ -149,8 +149,8 @@ namespace order_stock_management_api.Services
                 var deletedProductLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Hata",
-                    logDetails = "Ürün silinmiş",
+                    logType = "Error",
+                    logDetails = "Product has been deleted",
                     customerId = order.customerId,
                     orderId = order.orderId
                 };
@@ -168,8 +168,8 @@ namespace order_stock_management_api.Services
                 var insufficientStockLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Hata",
-                    logDetails = "Ürün stoğu yetersiz",
+                    logType = "Error",
+                    logDetails = "Product stock is insufficient",
                     customerId = order.customerId,
                     orderId = order.orderId
                 };
@@ -186,8 +186,8 @@ namespace order_stock_management_api.Services
                 var insufficientBudgetLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Hata",
-                    logDetails = "Kullanıcının bütçesi yetersiz",
+                    logType = "Error",
+                    logDetails = "Customer's budget is insufficient",
                     customerId = order.customerId,
                     orderId = order.orderId
                 };
@@ -205,8 +205,8 @@ namespace order_stock_management_api.Services
                 var stockDeductionErrorLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Hata",
-                    logDetails = "Stok düşme işlemi başarısız",
+                    logType = "Error",
+                    logDetails = "Stock drop operation failed",
                     customerId = order.customerId,
                     orderId = order.orderId
                 };
@@ -233,8 +233,8 @@ namespace order_stock_management_api.Services
                 var successLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Bilgilendirme",
-                    logDetails = "Satın alma başarılı",
+                    logType = "Informing",
+                    logDetails = "Purchase successful",
                     customerId = order.customerId,
                     orderId = order.orderId
                 };
@@ -249,8 +249,8 @@ namespace order_stock_management_api.Services
                 var databaseErrorLog = new Logs
                 {
                     logDate = DateTime.Now,
-                    logType = "Hata",
-                    logDetails = "Veritabanı Hatası: " + ex.Message,
+                    logType = "Error",
+                    logDetails = "Database Error: " + ex.Message,
                     customerId = order.customerId,
                     orderId = order.orderId
                 };
