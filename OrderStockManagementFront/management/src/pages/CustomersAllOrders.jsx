@@ -89,7 +89,7 @@ const CustomersAllOrders = () => {
   
       console.log('Orders processed successfully:', data);
       alert('Orders processed successfully!');
-      //window.location.reload(); 
+      window.location.reload(); 
     } catch (error) {
       console.error('Error processing orders:', error);
       alert('Error processing orders: ' + error.message);
