@@ -71,14 +71,11 @@ const HomePage = () => {
             <h1 className="home-app-name">Öz Elbistanlılar Trendyol</h1>
           </div>
           <div className="home-header-buttons">
-            <div className="home-header-buttons">
-                <button className="home-header-button" onClick={handleOrders}>My Orders</button>
-                <button className="home-header-button" onClick={handleProfile}>Profile</button>
-                <button className="home-header-button" onClick={handleLogout}>Logout</button>
-            </div>
+            <button className="home-header-button-my-orders" onClick={handleOrders}>My Orders</button>
+            <button className="home-header-button" onClick={handleProfile}>Profile</button>
+            <button className="home-header-button" onClick={handleLogout}>Logout</button>
           </div>
         </header>
-    
         <div className="home-products-container">
           {products.length > 0 ? (
             products.map((product) => (

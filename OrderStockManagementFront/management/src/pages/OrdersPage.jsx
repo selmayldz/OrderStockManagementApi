@@ -41,7 +41,11 @@ const OrdersPage = () => {
           const newOrders = data.filter(
             (order) => !prevOrders.some((prevOrder) => prevOrder.orderId === order.orderId)
           );
-          return [...newOrders, ...prevOrders];
+
+          const updatedOrders = [...newOrders, ...prevOrders];
+          updatedOrders.sort((a, b) => b.orderId - a.orderId); 
+          
+          return updatedOrders;
         });
       } catch (error) {
         console.error('Error fetching customer orders:', error);
@@ -76,9 +80,9 @@ const OrdersPage = () => {
           const errorMessage = await response.text();
 
           if (errorMessage.includes('Not enough stock')) {
-            alert(`Ürün: ${product.productName} için yeterli stok yok. Bu işlem gerçekleştirilemez.`);
+            alert(`There is not enough stock for product: ${product.productName}. This operation cannot be performed.`);
           } else {
-            alert(`Bir hata oluştu: ${errorMessage}`);
+            alert(`An error occurred: ${errorMessage}`);
           }
           continue;
         }
@@ -106,31 +110,6 @@ const OrdersPage = () => {
     return 'Unknown';
   };
   
-  const ProgressBar = ({ progress, orderStatus }) => {
-    const [currentProgress, setCurrentProgress] = useState(progress);
-  
-    useEffect(() => {
-      let interval;
-  
-      if (orderStatus === 1) {
-        setCurrentProgress(100);
-      } else if (currentProgress < 80) {
-        interval = setInterval(() => {
-          setCurrentProgress((prev) => Math.min(prev + Math.random() * 10, 80));
-        }, 500);
-      }
-  
-      return () => clearInterval(interval);
-    }, [currentProgress, orderStatus]);
-  
-    return (
-      <div className="progress-container">
-        <div className="progress-bar" style={{ width: `${currentProgress}%` }}>
-          {currentProgress === 100 ? 'Successful' : `${currentProgress.toFixed(0)}%`}
-        </div>
-      </div>
-    );
-  };
   
   const handleBack = () => {
     navigate('/home');
@@ -215,5 +194,44 @@ const OrdersPage = () => {
   );
 };
 
+const ProgressBar = ({ progress, orderStatus }) => {
+  const [currentProgress, setCurrentProgress] = useState(progress);
+
+  useEffect(() => {
+    let interval;
+
+    if (orderStatus === 1) {
+      setCurrentProgress(100);
+    } else if (orderStatus === -1 && currentProgress < 80) {
+      interval = setInterval(() => {
+        setCurrentProgress((prevProgress) => {
+          const nextProgress = Math.min(prevProgress + 10, 80); 
+          return nextProgress;
+        });
+      }, 500);
+    }
+
+    return () => clearInterval(interval); 
+  }, [orderStatus, currentProgress]);
+
+  return (
+    <div className="progress-container">
+      <div
+        className="progress-bar"
+        style={{
+          width: `${currentProgress}%`,
+          background:
+            currentProgress === 100
+              ? 'linear-gradient(90deg, #4caf50, #388e3c)' 
+              : 'linear-gradient(90deg, #ffc107, #ffeb3b)',
+        }}
+      >
+        {currentProgress === 100
+          ? 'Successful'
+          : `${currentProgress.toFixed(0)}%`}
+      </div>
+    </div>
+  );
+};
 
 export default OrdersPage;

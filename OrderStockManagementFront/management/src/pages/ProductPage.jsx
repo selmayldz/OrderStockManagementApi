@@ -33,7 +33,7 @@ const ProductPage = () => {
   
   useEffect(() => {
     if (!token) {
-      console.error('Token bulunamadı.');
+      console.error('Token not found.');
       return;
     }
     fetchProducts();

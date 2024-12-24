@@ -60,7 +60,9 @@ const CustomersAllOrders = () => {
         customerName: order.customerName, 
         productName: order.productName,   
         customerId: order.customerId,
-        productId: order.productId
+        productId: order.productId,
+        waitingTime: order.waitingTime,
+        priorityScore: order.priorityScore
       }));
   
       const response = await fetch('http://localhost:5048/api/Admin/process-orders', {
@@ -71,11 +73,11 @@ const CustomersAllOrders = () => {
         },
         body: JSON.stringify({ orders: ordersToProcess }),
       });
-  
+      
       if (!response.ok) {
         throw new Error('Failed to process orders');
       }
-  
+      console.log(ordersToProcess)
       const responseText = await response.text(); 
       let data;
   
@@ -93,7 +95,6 @@ const CustomersAllOrders = () => {
       alert('Error processing orders: ' + error.message);
     }
   };
-  
   const handleBack = () => {
     navigate('/admin');
   };
@@ -127,6 +128,8 @@ const CustomersAllOrders = () => {
               <th>Quantity</th>
               <th>Total Price</th>
               <th>Order Date Time</th>
+              <th>Waiting Time</th>
+              <th>Priority Score</th>
               <th>Order Status</th>
             </tr>
           </thead>
@@ -138,6 +141,8 @@ const CustomersAllOrders = () => {
                 <td>{order.quantity}</td>
                 <td>${order.totalPrice}</td>
                 <td>{order.orderDate} {order.orderTime.split(':').slice(0, 2).join(':')}</td>
+                <td>{order.waitingTime}</td>
+                <td>{order.priorityScore}</td>
                 <td>
                     {getOrderStatus(order.orderStatus, order.progress || 0)}
                 </td>
