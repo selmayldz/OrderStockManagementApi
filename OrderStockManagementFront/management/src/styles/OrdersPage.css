@@ -37,7 +37,7 @@ h1 {
   }
   
   .progress-bar[style*="width: 80%"] {
-    background: linear-gradient(90deg, #6c63ff, #6b63ffb8); 
+    background: linear-gradient(90deg, #bd79eb, #ac75d0); 
   }
   
   
@@ -72,7 +72,7 @@ th, td {
 }
 
 th {
-    background-color: #6c63ff;
+    background-color: #bd79eb;
     color: white;
     text-transform: uppercase;
     font-size: 14px;
@@ -96,7 +96,7 @@ tbody tr:nth-child(even) {
 } 
 
 .place-all-orders-button {
-    background-color: #6c63ff;
+    background-color: #bd79eb;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -111,7 +111,7 @@ tbody tr:nth-child(even) {
 }
 
 .place-all-orders-button:hover {
-    background-color: #5751d5;
+    background-color: #bd79eb;
     transform: scale(1.05);
 }
 
