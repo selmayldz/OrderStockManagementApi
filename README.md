@@ -1,86 +1,82 @@
-# Eş Zamanlı Sipariş ve Stok Yönetimi Uygulaması
+# Concurrent Order and Stock Management Application
 
-Bu proje, işletmelerin operasyonel süreçlerini dijitalleştirmek ve verimliliklerini artırmak için multithreading ve senkronizasyon mekanizmalarını kullanan bir sipariş ve stok yönetimi sistemidir. Sistem, ASP.NET Core, React Vite ve Microsoft SQL Server teknolojileriyle geliştirilmiştir.
+This project is a system designed to digitalize and enhance the efficiency of business operational processes using multithreading and synchronization mechanisms. The system is developed with ASP.NET Core, React Vite, and Microsoft SQL Server technologies.
 
-## 🚀 Projenin Amacı
+## 🚀 Project Objectives
 
-- Multithreading ve senkronizasyon mekanizmalarını kullanarak eş zamanlı veri erişim problemlerini çözmek.
-- İşletmelerin stok ve sipariş süreçlerini dijitalleştirerek daha kullanıcı dostu ve güvenli bir çözüm sunmak.
-- SignalR ile gerçek zamanlı bildirimler ve JWT tabanlı kimlik doğrulama ile güvenli erişim sağlamak.
+- Solve concurrent data access issues using multithreading and synchronization mechanisms.
+- Provide a user-friendly and secure solution by digitalizing stock and order processes for businesses.
+- Ensure secure access with real-time notifications via SignalR and JWT-based authentication.
 
-## 📋 Özellikler
+## 📋 Features
 
-- **Sipariş ve Stok Yönetimi**: Siparişlerin ve stokların eş zamanlı yönetimi.
-- **Admin ve Kullanıcı Sistemleri**: Farklı yetkilere sahip kullanıcı rolleri.
-- **Gerçek Zamanlı Bildirimler**: SignalR ile sipariş durumları ve hata günlükleri.
-- **Katmanlı Mimari**: Controller, Service, Repository ve Database katmanları.
-- **Güvenlik ve Loglama**: JWT ile kimlik doğrulama ve loglama mekanizmaları.
+- **Order and Stock Management**: Concurrent management of orders and stocks.
+- **Admin and User Systems**: Different roles with distinct access permissions.
+- **Real-Time Notifications**: Order statuses and error logs via SignalR.
+- **Layered Architecture**: Controller, Service, Repository, and Database layers.
+- **Security and Logging**: JWT-based authentication and logging mechanisms.
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Technologies Used
 
 - **Backend**: ASP.NET Core, Entity Framework Core
 - **Frontend**: React Vite
-- **Veritabanı**: Microsoft SQL Server
-- **Gerçek Zamanlı Bildirim**: SignalR
-- **Kimlik Doğrulama**: JWT (JSON Web Token)
+- **Database**: Microsoft SQL Server
+- **Real-Time Notifications**: SignalR
+- **Authentication**: JWT (JSON Web Token)
 
-## 📂 Proje Yapısı
+## 📂 Project Structure
 
-### Backend Katmanları
-- **Controller Katmanı**: Kullanıcı isteklerini karşılar ve iş mantığına yönlendirir.
-- **Service Katmanı**: İş kurallarını ve mantıksal işlemleri barındırır.
-- **Repository Katmanı**: Veritabanı işlemlerini yönetir.
-- **Database Katmanı**: Veritabanı şeması ve ilişkiler.
+### Backend Layers
+- **Controller Layer**: Handles user requests and directs them to the appropriate business logic.
+- **Service Layer**: Contains business rules and logical operations.
+- **Repository Layer**: Manages database operations.
+- **Database Layer**: Database schema and relationships.
 
-### Frontend Bileşenleri
-- **Müşteri İşlemleri**: Kullanıcı kaydı, giriş, sipariş ve profil yönetimi.
-- **Admin Paneli**: Ürün, kullanıcı ve sipariş yönetimi.
-- **Log İzleme**: Gerçek zamanlı log takibi.
+### Frontend Components
+- **Customer Operations**: User registration, login, orders, and profile management.
+- **Admin Panel**: Product, user, and order management.
+- **Log Monitoring**: Real-time log tracking.
 
-## 📈 Deneysel Sonuçlar
+## 📈 Experimental Results
 
-- Ortalama sipariş işleme süresi: 150ms
-- Eş zamanlı kullanıcı kapasitesi: 500 kullanıcı
-- Gerçek zamanlı bildirim gecikmesi: <50ms
-- Hata günlükleri iletimi: 30ms
+- Average order processing time: 150ms
+- Concurrent user capacity: 500 users
+- Real-time notification latency: <50ms
+- Error log transmission time: 30ms
 
-## ⏳ Kurulum
+## ⏳ Setup
 
-### Gereksinimler
+### Requirements
 - .NET 6 SDK
-- Node.js (v16 veya üstü)
+- Node.js (v16 or higher)
 - SQL Server
 
-### Adımlar
+### Steps
 
-1. **Backend için**:
+1. **For Backend**:
    ```bash
    cd backend
    dotnet restore
    dotnet run
    ```
 
-2. **Frontend için**:
+2. **For Frontend**:
    ```bash
    cd frontend
    npm install
    npm run dev
    ```
 
-3. **Veritabanı Ayarları**:
-   - `appsettings.json` dosyasındaki SQL Server bağlantı dizesini güncelleyin.
+3. **Database Configuration**:
+   - Update the SQL Server connection string in the `appsettings.json` file.
 
-## 🌟 Önemli Bileşenler
+## 🌟 Key Components
 
-- **AdminController**: Admin yetkisine sahip kullanıcılar için özel işlevler.
-- **OrdersController**: Sipariş oluşturma ve görüntüleme işlemleri.
-- **ProductsController**: Ürün ekleme, güncelleme ve listeleme.
-- **SignalR**: Gerçek zamanlı bildirim mekanizması.
+- **AdminController**: Special functions for users with admin permissions.
+- **OrdersController**: Order creation and viewing operations.
+- **ProductsController**: Adding, updating, and listing products.
+- **SignalR**: Real-time notification mechanism.
 
-## 🤝 Katkıda Bulunun
+## 📄 License
 
-Bu projeye katkıda bulunmak isterseniz, lütfen bir **pull request** gönderin veya bir **issue** açın.
-
-## 📄 Lisans
-
-Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına göz atabilirsiniz.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
