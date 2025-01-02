@@ -53,16 +53,9 @@ This project is a system designed to digitalize and enhance the efficiency of bu
 
 ### Steps
 
-1. **For Backend**:
+1. **For Frontend**:
    ```bash
-   cd backend
-   dotnet restore
-   dotnet run
-   ```
-
-2. **For Frontend**:
-   ```bash
-   cd frontend
+   cd management
    npm install
    npm run dev
    ```
